@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Receba três números</title>
+
+
+</head>
+<body>
+
+    <script type="text/javascript">
+        var x = new Array(parseFloat(prompt("Entre com o primeiro num")),
+        parseFloat(prompt("Entre com o segundo num")),
+        parseFloat(prompt("Entre com o terceiro num")));
+
+        x.sort(function (a, b) { return a - b });
+        document.write("sequencia é: " + x[0] + ", " + x[1] + ", " + x[2]);
+        
+    
+    </script>
+
+</body>
+</html>

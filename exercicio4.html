@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Discador</title>
+
+    <script type="text/javascript">
+
+        function teclou(x) {
+
+            var y = parseInt(x);
+            document.teclado.numero.value = document.teclado.numero.value + y;
+        }
+
+        function discar() {
+            var x = document.teclado.numero.value;
+            alert("Chamando: " + x);
+        }
+
+    </script>
+
+</head>
+<body>
+
+<form name="teclado">
+<table>
+<tr>
+    <td colspan="3" align="center">
+        <input type="text" name="numero" size="8" />
+    </td>
+</tr>
+
+<tr>
+<td><input type="button" value=" 1 " onclick="teclou(1)" /></td>
+<td><input type="button" value=" 2 " onclick="teclou(2)" /></td>
+<td><input type="button" value=" 3 " onclick="teclou(3)" /></td>
+</tr>
+
+<tr>
+<td><input type="button" value=" 4 " onclick="teclou(4)" /></td>
+<td><input type="button" value=" 5 " onclick="teclou(5)" /></td>
+<td><input type="button" value=" 6 " onclick="teclou(6)" /></td>
+</tr>
+
+<tr>
+<td><input type="button" value=" 4 " onclick="teclou(7)" /></td>
+<td><input type="button" value=" 8 " onclick="teclou(8)" /></td>
+<td><input type="button" value=" 9 " onclick="teclou(9)" /></td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+<td><input type="button" value=" 0 " onclick="teclou(0)" /></td>
+<td>&nbsp;</td>
+</tr>
+
+<tr> <td colspan="3" align="center">
+<input type="button" value="discar" onclick="discar()" />
+</td>
+</tr>
+
+</tabe>
+</form>
+
+</body>
+</html>

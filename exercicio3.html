@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Calcula Salário</title>
+
+    <script type="text/javascript">
+        function calcula() {
+            var x = parseFloat(document.salario.x.value);
+            var classe = parseInt(document.salario.sal.value);
+
+            if (classe == 1)
+                document.write("Excelente. Salário: "+ (x + ((x * 100) / 100)));
+            else if (classe == 2)
+                document.write("Bom. Salário: "+ (x + ((x * 80) / 100)));
+            else if (classe == 3)
+                document.write("Médio. Salário: "+(x + ((x * 50) / 100)));
+            else if (classe == 4)
+                document.write("Regular. Salário: "+ (x + ((x * 30) / 100)));
+            else if (classe == 5)
+                document.write("Precisa treinar mais. Salário: " +(x + ((x * 10) / 100)));
+            else if (classe == 6)
+                document.write("Te cuida. Salário: "+ (x + ((x * 5) / 100)));
+            else
+                document.write("Tsktsk. Salário: "+x);
+        }
+    </script>
+
+</head>
+<body>
+<p align="center"><b>Tabela de Cálculo:</b></p>
+<form name="salario">
+<input type="text" name="x"/>
+    <select name="sal">
+                  <option value="1">Classe 1</option>
+                  <option value="2">Classe 2</option>
+                  <option value="3">Classe 3</option>
+                  <option value="4">Classe 4</option>
+                  <option value="5">Classe 5</option>
+                  <option value="6">Classe 6</option>
+                  <option value="7">Classe 7</option>
+    </select>
+    <input type="button" value="Calcula Salário" onclick="calcula()"/>
+    </form>
+
+
+
+</body>
+</html>

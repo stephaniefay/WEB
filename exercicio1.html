@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Questão 2015/1</title>
+
+    <script type="text/javascript">
+        function obtemUmNumeroInteiroDoUsuario() {
+            return parseInt(prompt("Entre com o numero"));
+        }
+
+        function resto(x, y) {
+            return x % y;
+        }
+
+        function maior(x, y) {
+            if (x > y)
+                return x;
+            else
+                return y;
+        }
+
+
+
+    </script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+    n1 = obtemUmNumeroInteiroDoUsuario();
+    n2 = obtemUmNumeroInteiroDoUsuario();
+    alert("O resto da divisão de " + n1 + " por 10 é " + resto(n1, 10));
+    alert("O resto da divisão de " + n2 + " por 5 é " + resto(n2, 5));
+
+    if (n1 != 25)
+        alert("O maior número entre " + n1 + " e 25 é " + maior(25, n1));
+    else
+        alert("O primeiro número lido é igual a 25");
+    if (n1 != n2)
+        alert("O maior número entre " + n1 + " e " + n2 + " é " + maior(n1, n2));
+    else
+        alert("Os dois números lidos são iguais");
+
+
+</script>
+
+</body>
+</html>
