@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Funcoes Pura Matematica - INTERATIVA</title>
+
+    <script type="text/javascript">
+        function matmat() {
+            var x = document.formularioValor.campoValor.value;
+            x = 2 * x + 5;
+            document.write("valor é " + x);
+        }
+    </script>
+
+</head>
+<body>
+
+<form name='formularioValor'>
+Entre com o valor de x:
+<input type="text" name='campoValor' />
+<input type="button" value='Calcule' onclick='matmat()'/>
+</form>
+
+</body>
+</html>

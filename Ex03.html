@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Exercício 3</title>
+
+    <script type="text/javascript">
+        function submit() {
+
+            var text1 = document.teste.first.value;
+            var text2 = document.teste.second.value;
+
+            var tam = text1.indexOf(text2);
+            if (tam >= 0) {
+                document.getElementById('resultado').innerHTML = 'A sentença <b>' + text2 + '</b> foi encontrada na posição ' + tam;
+            }
+
+            else {
+                document.getElementById('resultado').innerHTML = 'Não encontrada.';
+            }
+        
+        }
+    </script>
+
+</head>
+<body>
+
+<form name="teste">
+<input type="text" name="first" /><br />
+Sentença base;<br />
+<input type="text" name="second" /><br />
+String a ser procurada;<br />
+</form>
+<button onclick="submit()">Submit</button>
+<p id="resultado"></p>
+
+</body>
+</html>

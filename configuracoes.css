@@ -1,0 +1,42 @@
+﻿body 
+{
+    background: url('') no-repeat;
+    background-color: transparent;
+}
+
+p 
+{
+    font-family:Courier;
+    color: #aaa;
+    font-size:15px;
+}
+
+b 
+{
+    border-bottom: 2px;
+    border-bottom-color: #000;
+    border-bottom-style: dotted;
+    color:#CD0000;
+}
+
+i
+{
+    color:#000000;
+}
+
+u 
+{
+    color:#8B008B;
+}
+
+a 
+{
+    text-decoration: none;
+    color: #aaa;
+}
+
+a:hover 
+{
+    text-transform:uppercase;
+    color: #CD0000;
+}

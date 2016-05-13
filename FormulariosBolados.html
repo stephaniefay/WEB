@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Preenche aqui, cara</title>
+    <script type="text/javascript">
+        function voteAecio() {
+            document.getElementById("fire").innerHTML = 'Somente letras maiúsculas';
+         }
+
+         function voteDilma() {
+             document.getElementById("fire").innerHTML = 'formato dd/mm/aaaa';
+         }
+
+         function voteLula() {
+             document.getElementById("fire").innerHTML = 'nnnnn-nnn';
+         }
+
+         function voteFHC() {
+             document.getElementById("fire").innerHTML = 'nnn.nnn.nnn-dd';
+         }
+    </script>
+</head>
+<body>
+<p id="fire">Coisas mágicas acontecerão por aqui</p>
+<form name="Formulario">
+Nome:<input type="text" name="campoNome" onclick="voteAecio()"/><br />
+
+Data de Nascimento:<input type="text" name="campoData" onclick="voteDilma()"/><br />
+
+CEP:<input type="text" name="campoCEP" onclick="voteLula()" /><br />
+
+CPF:<input type="text" name="campoCPF" onclick="voteFHC()" /><br />
+</form>
+</body>
+</html>

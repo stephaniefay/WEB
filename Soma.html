@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Eita, clica no botao</title>
+
+    <script type="text/javascript">
+        function soma() {
+            var x = parseInt(document.calculadora.x.value);
+            var y = parseInt(document.calculadora.y.value);
+            var resultado = x + y;
+            document.write("A soma dos valores " + x + " e " + y + " é: " + resultado);
+            }
+        </script>
+
+</head>
+<body>
+
+<p>Teste com o botão, parte 2~</p>
+<form name="calculadora">
+Entre com o Valor de x: <input type="text" name="x" /><br />
+Entre com o Valor de y: <input type="text" name="y" /><br />
+<input type="button" value="Calcule~" onclick="soma()" />
+</form>
+</body>
+</html>

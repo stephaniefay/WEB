@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Soma dois operandos</title>
+    <script type="text/javascript">
+    function opera(){
+        var resultado, num1, num2;
+        num1 = parseInt(document.calculadora.op1.value);
+        num2 = parseInt(document.calculadora.op2.value);
+        resultado = num1 + num2;
+        document.write("O resultado de " + num1 + " mais " + num2 + " éééé " + resultado + " porra");
+
+        }
+    </script>
+</head>
+<body>
+<form name="calculadora">
+Operando1: <input type="text" name="op1"><br/>
+Operando2: <input type="text" name="op2"><br/>
+<input type="button" value="Calcula" onclick="opera()" />
+</form>
+</body>
+</html>

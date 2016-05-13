@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Testa Nome e Gênero</title>
+
+    <script type="text/javascript">
+
+        function submit() {
+            var x = document.teste.nome.value;
+            if (x == null || x == "") {
+                alert("Preencha seu nome corretamente!");
+                return false;
+            }
+            if (document.getElementById('female').checked == false && document.getElementById('male').checked == false) {
+                alert("Escolha seu sexo!");
+                return false;
+            }
+            if (document.getElementById('female').checked)
+                alert("Seu nome é: " + x + " e você é do sexo feminino");
+            else
+                alert("Seu nome é: " + x + " e você é do sexo masculino");
+            
+        }
+
+    </script>
+
+</head>
+<body>
+
+<form name="teste">
+<input type="text" name="nome" /><br />
+<input type="radio" name="sex" id="female" /> Feminino<br />
+<input type="radio" name="sex" id="male" /> Masculino<br />
+</form>
+
+<button onclick="submit()">Submit!</button>
+
+</body>
+</html>

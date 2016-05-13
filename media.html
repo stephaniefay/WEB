@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        function maior(a, b) {
+            if (a < b)
+                return b;
+            else
+                return a;        
+         }
+
+         function media(a, b, c) {
+             var media;
+             media = (a + b + c) / 3;
+             return media;
+         }
+
+         function par(a) {
+             if (a % 2 == 0)
+                 return 1;
+             else
+                 return 0; 
+        }
+
+        function total(a, b, c, media) {
+            var total = 0;
+            if (a > media)
+                total = total + 1;
+            else if (b > media)
+                total = total + 1;
+            else if (c > media)
+                total = total + 1;
+            return total;               
+        }
+    </script>
+</head>
+<body>
+<script type="text/javascript">
+
+    var n1, n2, n3, aux, npares, tot;
+
+    n1 = parseFloat(prompt("Entre com o primeiro número"));
+
+    n2 = parseFloat(prompt("Entre com o o segundo número"));
+
+    n3 = parseFloat(prompt("Entre com o terceiro número"));
+
+    aux = maior(n1, n2);
+
+    alert("O maior numero lido = " + maior(aux, n3));
+
+    alert("Media dos numeros lidos = " + media(n1, n2, n3));
+
+    npares = par(n1) + par(n2) + par(n3);
+
+    alert("Total de numeros pares lidos = " + npares);
+
+    tot = media(n1, n2, n3);
+
+    alert("Total de valores acima da media = " + total(n1, n2, n3, tot));
+
+</script>
+
+</body>
+</html>

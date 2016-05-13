@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Ex 04</title>
+
+    <script type="text/javascript">
+
+        function submit() {
+
+            document.getElementById('resultado').innerHTML = document.teste.nome.value + ' - ' + document.teste.end.value + ' - ' + document.teste.tel.value;
+
+        }
+    
+    </script>
+
+</head>
+<body>
+
+<p id="instrucoes">Preencha os campos conforme solicitado.</p>
+
+<form name="teste">
+Nome: <input type="text" name="nome" /><br />
+Endereço: <input type="text" name="end" /><br />
+Telefone: <input type="text" name="tel" /><br />
+</form>
+
+<button onclick="submit()">MOSTRA DADOS</button>
+
+<p id="resultado"></p>
+
+
+</body>
+</html>

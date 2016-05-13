@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Teste de Link</title>
+
+<style type="text/css">
+
+a 
+{
+    font-family: Tahoma;
+    font-size: 25px;
+    text-decoration: none;
+    color: #aaa;
+    
+}
+
+</style>
+
+    <script type="text/javascript">
+
+        function linkLouco(objeto) {
+            document.getElementById(objeto).style = 'color: #CD0000; border-bottom: dotted; border-bottom-size: 1px; text-transform:uppercase;';
+        }
+
+        function semLinkLouco(objeto) {
+            document.getElementById(objeto).style = 'text-decoration: none; color: #aaa;';
+        }
+    
+    </script>
+
+</head>
+<body>
+
+<a href="http://google.com" id="link1" onmouseover='linkLouco("link1")' onmouseout='semLinkLouco("link1")'> Link 1 </a><br />
+<a href="http://google.com" id="link2" onmouseover='linkLouco("link2")' onmouseout='semLinkLouco("link2")'> Link 2 </a><br />
+<a href="http://google.com" id="link3" onmouseover='linkLouco("link3")' onmouseout='semLinkLouco("link3")'> Link 3 </a><br />
+<a href="http://google.com" id="link4" onmouseover='linkLouco("link4")' onmouseout='semLinkLouco("link4")'> Link 4 </a><br />
+<a href="http://google.com" id="link5" onmouseover='linkLouco("link5")' onmouseout='semLinkLouco("link5")'> Link 5 </a><br />
+<a href="http://google.com" id="link6" onmouseover='linkLouco("link6")' onmouseout='semLinkLouco("link6")'> Link 6 </a><br />
+<a href="http://google.com" id="link7" onmouseover='linkLouco("link7")' onmouseout='semLinkLouco("link7")'> Link 7 </a><br />
+<a href="http://google.com" id="link8" onmouseover='linkLouco("link8")' onmouseout='semLinkLouco("link8")'> Link 8 </a><br />
+<a href="http://google.com" id="link9" onmouseover='linkLouco("link9")' onmouseout='semLinkLouco("link9")'> Link 9 </a><br />
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Exercício 01</title>
+
+    <script type="text/javascript">
+
+        function showPicture() {
+            document.getElementById('figura').innerHTML = "<img src='IMAGES/Morto.gif'>";
+        }
+
+        function togglePicture() {
+            document.getElementById('figura').innerHTML = "<img src='IMAGES/Vivo.gif'>";
+        }
+
+    </script>
+
+</head>
+<body>
+
+<form name="teste">
+
+<input type="button" value="Show" onclick="showPicture()" />
+
+</form>
+
+<p id='figura' onmouseover="togglePicture()"></p>
+
+</body>
+</html>

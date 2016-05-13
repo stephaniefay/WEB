@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Teste de Controle de Página</title>
+<script type="text/javascript">
+
+    function onO(objeto) {
+        document.getElementById(objeto).style = 'color: #000000; font-family: Tahoma; font-size: 25px;';
+    }
+
+    function outO(objeto) {
+        document.getElementById(objeto).style = 'color: #B2B2B2; font-family: Tahoma; font-size: 25px;';
+    }
+
+    function primeiraC() {
+        document.getElementById("imagem").src = "http://1.bp.blogspot.com/-0l4IZLuKxZg/UpoVAMfNuAI/AAAAAAAAfF0/qMXNwmdFuXs/s400/Sprite_Can.png";
+        document.getElementById("texto").innerHTML = 'Pontifícia Universidade Católica';
+
+    }
+
+    function segundaC() {
+        document.getElementById("imagem").src = "http://www.st-hubert.com/images/product/10284_p.jpg";
+        document.getElementById("texto").innerHTML = 'Departamento de Informática PUC-Rio';
+    }
+
+    function terceiraC() {
+        document.getElementById("imagem").src = "http://imgp3.en.makepolo.net/o/197/275/4e340e66e74749d68d2bd1f0d69bc172.jpg";
+        document.getElementById("texto").innerHTML = 'INF1030 - Professor Meslin';
+    }
+
+    function quartaC() {
+        document.getElementById("imagem").src = "http://unifour.com.au/wp-content/uploads/2013/08/Sprite200.jpg";
+        document.getElementById("texto").innerHTML = 'Javascript <3';
+    }
+
+</script>
+
+</head>
+
+<body>
+<div style="position:absolute;  right:0px;">
+<img src="http://www.cis.puc-rio.br/cedes/images/logo_puc.gif" id="imagem" />
+<p id="texto" align="center"> Descrição </p>
+</div>
+
+<p id="primeira" onmouseover='onO("primeira")' onmouseout='outO("primeira")' onclick="primeiraC()" style='color: #B2B2B2; font-family: Tahoma; font-size: 25px;'> PUC </p>
+<p id="segunda" onmouseover='onO("segunda")' onmouseout='outO("segunda")' onclick="segundaC()" style='color: #B2B2B2; font-family: Tahoma; font-size: 25px;'> DI </p>
+<p id="terceira" onmouseover='onO("terceira")' onmouseout='outO("terceira")' onclick="terceiraC()" style='color: #B2B2B2; font-family: Tahoma; font-size: 25px;'> CONCEITOS DE INFORMÁTICA </p>
+<p id="quarta" onmouseover='onO("quarta")' onmouseout='outO("quarta")' onclick="quartaC()" style='color: #B2B2B2; font-family: Tahoma; font-size: 25px;'> JAVASCRIPT </p>
+
+</body>
+</html>

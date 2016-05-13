@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var text1 = prompt("Entre com o texto a ser analisado:");
+    var text2 = prompt("Entre com a palavra a ser procurada: ");
+    var tam = text1.length;
+    var a = new Array();
+    var tam2 = 0;
+    document.write("Seu texto de procura é: " + text1 +"<br>");
+    document.write("Você encontrou sua palavra (" + text2 + ") nessas posições: <br>");
+    for (; text1.indexOf(text2) != -1;) {
+        tam2 = text1.indexOf(text2);
+        document.write((text1.indexOf(text2)+tam2) + "<br>");
+        text1 = text1.substring(tam2+1, tam);
+        
+    }
+
+</script>
+
+</body>
+</html>

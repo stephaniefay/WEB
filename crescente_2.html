@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Crescente</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var x = new Array(parseFloat(prompt("Entre com o primeiro num", "text")), 
+        parseFloat(prompt("Entre com o segundo num", "text")), 
+        parseFloat(prompt("Entre com o terceiro num", "text")),
+        parseFloat(prompt("Entre com o quarto num", "text")),
+        parseFloat(prompt("Entre com o quinto num", "text")));
+
+        x.sort(function (a, b) { return a - b });
+        document.write("sequencia é: " + x[0] + ", " + x[1] + ", " + x[2] + ", " + x[3] + ", " + x[4]);
+        
+    
+    </script>
+</body>
+</html>

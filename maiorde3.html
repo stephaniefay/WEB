@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Maior de 3</title>
+    <script type="text/javascript">
+        function maiorDe3(a, b, c) {
+            if (a < b && b < c)
+                return c;
+            else if (a < b && c < b)
+                return b;
+            else if (b < a && c < a)
+                return a;
+        }
+    </script>
+</head>
+<body>
+<script type="text/javascript">
+    var x, y, z;
+    x = parseInt(prompt("Informe o primeiro número"));
+    y = parseInt(prompt("Informe o segundo número"));
+    z = parseInt(prompt("Informe o terceiro número"));
+    alert("O maior dos números é " + maiorDe3(x, y, z));
+</script>
+
+</body>
+</html>

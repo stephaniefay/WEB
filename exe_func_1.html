@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        function produto(a, b) {
+            //nao usar a linha abaixo porque as variaveis a e b ja foram criadas
+            //nao precisa colocar valores nas variaveis a e b porque elas vao receber os valores
+            //durante a chamada da funcao
+            //var a, b;
+            var resultado;
+            resultado = a * b;
+            return resultado;
+        }
+    </script>
+</head>
+<body>
+<p>Exemplo 1 de uso da funcao</p>
+<script type="text/javascript">
+    var x, y, resposta;
+    x = 2;
+    y = 3;
+    resposta = produto(x, y);
+    document.write(resposta);
+</script>
+
+<p>Exemplo 2 de uso da funcao</p>
+<script type="text/javascript">
+    /* Usando a funcao com 2 valores ao invés de 2 variáveis */
+    resposta = produto(4, 5);
+    document.write(resposta);
+</script>
+
+<p>Exemplo 3 de uso da funcao</p>
+<script type="text/javascript">
+    /* a função pode receber valores ou variáveis, desde que respeite quantos valores ela precise receber */
+    resposta = produto(x + 4, y + 5);
+    document.write(resposta);
+</script>
+
+<p>Exemplo 4 de uso da funcao</p>
+<script type="text/javascript">
+    document.write(produto(x + 6, y + 7));
+    /*a função produto quando executada vira um valor que será escrito por document.write */
+</script>
+
+</body>
+</html>

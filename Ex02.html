@@ -1,0 +1,51 @@
+﻿
+<html>
+<head>
+<title>Modelo</title>
+
+<script type="text/javascript">
+    function muda(objeto, text) {
+
+        if (text == "acende") {
+            objeto.style = 'background-color:green;';
+        }
+
+        else {
+            objeto.style = 'background-color:white;';
+        }
+
+    }
+
+</script>
+
+</head>
+<body>
+<table>
+<tr>
+<td onmouseover='muda(this, "acende")' onmouseout='muda(this, "apaga")'>
+Texto 1
+</td>
+</tr>
+<tr>
+<td onmouseover='muda(this, "acende")' onmouseout='muda(this, "apaga")'>
+Texto 2
+</td>
+</tr>
+<tr>
+<td onmouseover='muda(this, "acende")' onmouseout='muda(this, "apaga")'>
+Texto 3
+</td>
+</tr>
+<tr>
+<td onmouseover='muda(this, "acende")' onmouseout='muda(this, "apaga")'>
+Texto 4
+</td>
+</tr>
+<tr>
+<td onmouseover='muda(this, "acende")' onmouseout='muda(this, "apaga")'>
+Texto 5
+</td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Boneco</title>
+    <script type="text/javascript">
+        var cont = 0;
+        var alegria = 1;
+        function coisasAcontecem() {
+            if (alegria == 1) {
+                switch (cont) {
+                    case 0:
+                        document.getElementById("idPrimeiro").src = "imagens/boneco1.jpg";
+                        cont++;
+                        return true;
+                    case 1:
+                        document.getElementById("idPrimeiro").src = "imagens/boneco2.jpg";
+                        cont++;
+                        return true;
+                    case 2:
+                        document.getElementById("idPrimeiro").src = "imagens/boneco3.jpg";
+                        cont++;
+                        return true;
+                    case 3:
+                        document.getElementById("idPrimeiro").src = "imagens/boneco4.jpg";
+                        alegria = 0;
+                        return true;
+                }
+            }
+            else {
+                switch (cont) {
+                    case 0:
+                        document.getElementById("idPrimeiro").src = "imagens/boneco1.jpg";
+                        alegria = 1;
+                        return true;
+                    case 1:
+                        document.getElementById("idPrimeiro").src = "imagens/boneco2.jpg";
+                        cont--;
+                        return true;
+                    case 2:
+                        document.getElementById("idPrimeiro").src = "imagens/boneco3.jpg";
+                        cont--;
+                        return true;
+                    case 3:
+                        document.getElementById("idPrimeiro").src = "imagens/boneco4.jpg";
+                        cont--;
+                        return true;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<img src="imagens/boneco1.jpg" id='idPrimeiro'/>
+<script type="text/javascript">
+    
+</script>
+
+<button onclick='coisasAcontecem()'>Segue a história</button>
+</body>
+</html>

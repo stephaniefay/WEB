@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Mas o que</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var diaS = new Array(7);
+    var diaE = new Date();
+    var MonS = new Array(12);
+    var dia, mes, ano;
+
+    dia = parseInt(prompt("Entre com o numeral correspondente ao dia de seu nascimento:"));
+    mes = parseInt(prompt("Entre com o numeral correspondente ao mes de seu nascimento:"));
+    ano = parseInt(prompt("Entre com o numeral correspondente ao ano de seu nascimento:"));
+
+    diaE.setDate(dia);
+    diaE.setMonth(mes-1);
+    diaE.setFullYear(ano);
+
+
+    diaS[0] = "Domingo";
+    diaS[1] = "Segunda-feira";
+    diaS[2] = "Terça-feira";
+    diaS[3] = "Quarta-feira";
+    diaS[4] = "Quinta-feira";
+    diaS[5] = "Sexta-feira";
+    diaS[6] = "Sábado";
+
+    MonS[0] = "Janeiro";
+    MonS[1] = "Fevereiro";
+    MonS[2] = "Março";
+    MonS[3] = "Abril";
+    MonS[4] = "Maio";
+    MonS[5] = "Junho";
+    MonS[6] = "Julho";
+    MonS[7] = "Agosto";
+    MonS[8] = "Setembro";
+    MonS[9] = "Outubro";
+    MonS[10] = "Novembro";
+    MonS[11] = "Dezembro";
+
+    document.write(diaS[diaE.getDay()] + ", " + diaE.getDate() + " de " + MonS[diaE.getMonth()] + " de " + diaE.getFullYear());
+
+</script>
+
+
+</body>
+</html>

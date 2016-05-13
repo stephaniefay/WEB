@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>4 Operações</title>
+    <script type="text/javascript">
+        function opera() {
+            var num1, num2, operacao;
+            num1 = parseFloat(document.calculadora.op1.value);
+            num2 = parseFloat(document.calculadora.op2.value);
+            operacao = document.calculadora.operador.value;
+
+            if (operacao == '+') resultado = num1 + num2;
+            else if (operacao == '-') resultado = num1 - num2;
+            else if (operacao == '*') resultado = num1 * num2;
+            else resultado = num1 / num2;
+            document.calculadora.result.value = resultado;
+        } /* value é para botão e name para caixinha de texto */
+    </script>
+</head>
+<body>
+<h1>4 Operações</h1>
+<form name="calculadora">
+<input type="text" name="op1" />
+<select name="operador">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+</select>
+<input type="text" name="op2" />
+<input type="button" value=" =" onclick="opera()" />
+<input type="text" name="result" />
+</form>
+</body>
+</html>

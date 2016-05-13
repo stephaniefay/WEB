@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Imagem que muda com clique</title>
+    <script type="text/javascript">
+        var c = 0;
+        function voteDilma() {
+            
+            if (c == 0) {
+                document.getElementById("imagemFeliz").src = "imagens/Superman.jpg";
+                c++;
+            }
+            else if (c == 1) {
+                document.getElementById("imagemFeliz").src = "imagens/Clark.jpg";
+                c--;
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+<img src="imagens/Clark.jpg" id="imagemFeliz" onclick='voteDilma()' />
+
+
+</body>
+</html>

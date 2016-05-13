@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Teste de Maximo</title>
+
+    <script type="text/javascript">
+
+        function maximo(x, y) {
+            if (x > y)
+                return x;
+            else
+                return y;
+        }
+    
+    </script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var x = parseFloat(prompt("Entre com um numero", "text"));
+    var y = parseFloat(prompt("Entre com outro numero", "text"));
+
+    x = maximo(x, y);
+    document.write("Maior numero é: " + x);
+
+</script>
+
+</body>
+</html>

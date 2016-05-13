@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Teste de Campos</title>
+
+    <script type="text/javascript">
+
+        function formName() {
+            document.getElementById("instrucoes").innerHTML = 'Seu nome.<br>Entre com somente letras maiúsculas. Ex: STEPHANIE';
+        }
+
+        function formDate() {
+            document.getElementById("instrucoes").innerHTML = 'Sua data de Nascimento.<br>Formato dd/mm/aaaa';
+        }
+
+        function formCep() {
+            document.getElementById("instrucoes").innerHTML = 'Seu CEP.<br>Formato nnnnn-nnn';
+        }
+
+        function formCpf() {
+            document.getElementById("instrucoes").innerHTML = 'Seu CPF.<br>Formato nnn.nnn.nnn-dd';
+        }
+
+        function submit() {
+            var x = document.teste.nome.value;
+            var y = document.teste.date.value;
+            var w = document.teste.cep.value;
+            var z = document.teste.cpf.value;
+
+            document.getElementById("resultado").innerHTML = 'Seu nome é: '+x+'<br>Sua Data de Nascimento é: '+y+'<br>Seu CEP é: '+w+'<br>Seu CPF é: '+z;
+
+        }
+
+    </script>
+
+</head>
+<body>
+<p id="instrucoes">Aqui virão as instruções;<br />
+Clique sobre o campo para saber mais.</p>
+<form name="teste">
+<input type="text" name="nome" onclick="formName()" /><br />
+<input type="text" name="date" onclick="formDate()" /><br />
+<input type="text" name="cep" onclick="formCep()" /><br />
+<input type="text" name="cpf" onclick="formCpf()" /><br />
+</form>
+
+<button onclick="submit()">Submit</button>
+
+<p id="resultado">Aqui virá o resultado.</p>
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Maior de Três</title>
+
+    <script type="text/javascript">
+
+        function maiorDe3(x, y, z) {
+
+            if (x > y) {
+                if (x > z)
+                    return x;
+                else
+                    return z;
+            }
+            else if (y > x) {
+                if (y > z)
+                    return y;
+                else
+                    return z;
+
+            }
+            else if (z > x) {
+                if (z > y)
+                    return z;
+                else
+                    return y;
+            }
+
+            else {
+                if (z > x)
+                    return z;
+                else
+                    return x;
+            }
+
+        }
+
+    </script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var x = parseFloat(prompt("Entre com 1º numero", "text"));
+    var y = parseFloat(prompt("Entre com 2º numero", "text"));
+    var z = parseFloat(prompt("Entre com 3º numero", "text"));
+
+    var x = maiorDe3(x, y, z);
+    document.write("O maior numero dos três é: " + x);
+
+</script>
+
+
+</body>
+</html>

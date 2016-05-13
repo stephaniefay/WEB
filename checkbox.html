@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Uso de Checkbox</title>
+    <script type="text/javascript">
+    function submit() {
+            var x = document.teste.nome.value;
+            if (x == null || x == "") {
+                alert("Preencha seu nome corretamente!");
+                return false;
+            }
+
+            if (document.getElementById('Atividade1').checked == true)
+                var a = 'Atividade 1';
+            if (document.getElementById('Atividade2').checked == true)
+                var b = 'Atividade 2';
+            if (document.getElementById('Atividade3').checked == true)
+                var c = 'Atividade 3';
+            if (document.getElementById('Atividade4').checked == true)/* estava com id Atividade3 */
+                var d = 'Atividade 4';
+            if (document.getElementById('Atividade5').checked == true)/* estava com id Atividade3 também */
+                var e = 'Atividade 5';
+            if (document.getElementById('Atividade6').checked == true)/* quem diria, estava com id Atividade3 */
+                var f = 'Atividade 6';
+
+
+            var stringFinal;
+
+            if (a != null)
+                stringFinal = a;
+
+            if (b != null) {
+                if (stringFinal != null) {
+                    stringFinal += ", " + b;
+                }
+                else {
+                    stringFinal = b;
+                }
+            }
+            if (c != null) {
+                if (stringFinal != null) {
+                    stringFinal += ", " + c;
+                }
+                else {
+                    stringFinal = c;
+                }
+            }
+            if (d != null) {
+                if (stringFinal != null) {
+                    stringFinal += ", " + d;
+                }
+                else {
+                    stringFinal = d;
+                }
+            }
+            if (e != null) {
+                if (stringFinal != null) {
+                    stringFinal += ", " + e;
+                }
+                else {
+                    stringFinal = e;
+                }
+            }
+            if (f != null) {
+                if (stringFinal != null) {
+                    stringFinal += ", " + f;
+                }
+                else {
+                    stringFinal = f;
+                }
+            }
+            if (stringFinal == null)
+                stringFinal = "nenhuma";
+
+            alert("Seu nome é: " + x + " E as atividades que você pratica são: " + stringFinal);
+            
+        } 
+
+        function Teste (a) {
+            switch (a) {
+                case 1:
+                    document.getElementById('Atividade1').checked = true;
+                    break;
+                case 2:
+                    document.getElementById('Atividade2').checked = true;
+                    break;
+                case 3:
+                    document.getElementById('Atividade3').checked = true;
+                    break;
+                case 4:
+                    document.getElementById('Atividade4').checked = true;
+                    break;
+                case 5:
+                    document.getElementById('Atividade5').checked = true;
+                    break;
+                case 6:
+                    document.getElementById('Atividade6').checked = true;
+                    break;
+
+            }
+        }
+
+        </script>
+</head>
+<body>
+
+
+    <form name="teste">
+    <input type="text" name="nome" /><br />
+    <input type="checkbox" id="Atividade1" /><element id="wow" onclick='Teste(1)'> Atividade 1<br /></element>
+    <input type="checkbox" id="Atividade2" /><element id="wow" onclick='Teste(2)'> Atividade 2<br /></element>
+    <input type="checkbox" id="Atividade3" /><element id="wow" onclick='Teste(3)'> Atividade 3<br /></element>
+    <input type="checkbox" id="Atividade4" /><element id="wow" onclick='Teste(4)'> Atividade 4<br /></element>
+    <input type="checkbox" id="Atividade5" /><element id="wow" onclick='Teste(5)'> Atividade 5<br /></element>
+    <input type="checkbox" id="Atividade6" /><element id="wow" onclick='Teste(6)'> Atividade 6<br /></element>
+    </form>
+
+    <button onclick="submit()">Submit!</button>
+
+</body>
+</html>
