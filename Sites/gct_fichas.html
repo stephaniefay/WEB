@@ -1,0 +1,993 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>GCT-Mod</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.12.3.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+
+    <style type="text/css">
+        #gctBack {
+            margin-top: 6%;
+            margin-left: 42%;
+            width: 45%;
+            opacity: 0.8;
+            position: fixed;
+            z-index: -1;
+        }
+
+        #gctLogo {
+            width: 24%;
+            z-index: 0;
+            margin-left: 1%;
+            position: fixed;
+        }
+
+        #gctMenu {
+            width: 17%;
+            margin-left: 5%;
+            margin-top: 12.5%;
+            position: fixed;
+            opacity: 0.9;
+        }
+
+            #gctMenu li, a {
+                background-color: #fff;
+                color: #000;
+            }
+
+            #gctMenu a:hover {
+                color: #56159f;
+                background-color: #e1e1e1;
+            }
+
+            #gctMenu a.dropdown-toggle:hover {
+                background-color: #e1e1e1;
+            }
+
+        body {
+            background-image: url("https://68.media.tumblr.com/fd9fb4429be12cff05b19d301d9a4783/tumblr_oaf5gqcp3I1r6nrhbo1_500.jpg");
+        }
+
+        #content {
+            margin-top: 5%;
+            margin-left: 24%;
+            position: absolute;
+            width: 75%;
+            opacity: 0.9;
+        }
+
+        .panel-body {
+            text-align: justify;
+            color: #000;
+            font-size: 12pt;
+        }
+
+
+        #content a{
+           color: #9755e1;
+        }
+
+        h1 {
+           font-family: Verdana;
+           font-size: 20px;
+           border-bottom: dashed 1px;
+           color: #86649b;
+                      text-align: center;
+        }
+
+        .title {
+           font-family: Verdana;
+           font-size: 20px;
+           border-bottom: dashed 1px;
+           color: #86649b;
+           text-align: center;
+        }
+ 
+        #pagination{
+           width:170px;
+           margin-top:20px;
+           text-align:center;
+           padding:0px 2px;
+        }
+
+        #pagination a {
+          font-family:Verdana;
+          font-size:11px;
+      background-color: transparent;
+    padding:1px 5px;
+    margin:2px;
+}
+
+                #pagination a:hover {
+          font-family:Verdana;
+          font-size:11px;
+      background-color: transparent;
+      color: #86649b;
+    padding:1px 5px;
+    margin:2px;
+}
+
+
+#pagination .current_page{
+    padding:1px 5px;
+    font-family:Verdana;
+    font-size:14px;
+    margin:2px;
+    }    
+
+.perma{
+    color:#000;
+    font-family:Verdana;
+    text-align:right;
+    text-transform:uppercase;
+    font-size:10px;
+    background:transparent;
+    }
+ 
+.perma a {
+    color:#86649b !important;
+    }
+
+.permsource {
+    text-align:right;
+    background:transparent;
+    z-index:1;
+    }
+ 
+#note{
+    margin-left:20px;
+     margin:20px auto;
+     width: 500px;
+     font-size: 11px;
+     text-transform:lowercase;
+     font-family:calibri;
+     color:#000;
+}
+ 
+ol.notes{
+    list-style-type:none;
+    margin:0px;
+    padding-left:5px;
+    line-height:130%;
+    color:#000;
+}
+ 
+ol.notes li.note img.avatar {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+            }
+ 
+.info{
+    padding-bottom:3px;
+    padding-top:5px;
+    padding-left:2px;
+    text-align:right;
+    font-family:Verdana;
+    font-size:10px;
+    color:#000;
+    margin-top:5px;
+}
+ 
+.tags{
+    margin-top:5px;
+    font-family:Verdana;
+    font-size:8px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    text-align:right;
+    color:#000;
+}
+ 
+#asker{
+    line-height:23px;
+    text-align:left;
+    font-size:13px;
+    font-style:italic;
+    text-transform:lowercase;
+    padding-bottom:5px;
+    font-family: Verdana;
+    font-weight:bold;
+}
+ 
+#ques{
+    margin-top:0px;
+    color:#000;
+    padding:5px 5px 5px 0px;
+}
+ 
+#answer{
+    margin-top:-17px;
+    padding:0px 0px 0px 0px;
+}
+ 
+#audio{
+    max-width:500px;
+    display:block;
+    background:#000;
+    opacity:.8;
+    }
+   
+  
+#quote {
+    font-size:15px;
+    font-style:italic;
+    margin-bottom:-5px;
+font-family: Verdana;
+text-shadow:1px 2px 1px #e4e4e4;
+letter-spacing:-1px;
+color:#000;
+}
+ 
+#source {text-align:right;}
+
+
+
+    </style>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "pageLength": 50,
+                "bPaginate": false,
+                "bLengthChange": false
+            });
+        });
+
+    </script>
+
+        <!--
+        <h1>Moderadoras</h1>
+
+<a href="http://arme-chan-gc.tumblr.com"><img src="http://41.media.tumblr.com/ebf9e70c0f2c5c57f5e0daaa15efd054/tumblr_nmh0e5Bqdp1s8icepo3_250.jpg" id="sideimg" /></a>
+
+<a href="http://immortal-sieghart.tumblr.com"><img src="http://40.media.tumblr.com/3067a88e9d12aec75aab22efe4d56dae/tumblr_nmh0e5Bqdp1s8icepo9_250.jpg" id="sideimg" /></a>
+        -->
+
+</head>
+<body>
+     <div id="gctBack" class="container">
+        <img src="https://68.media.tumblr.com/d0e10c237b43bfd8ef5fc712969bd293/tumblr_oafzzfCpXb1rg6icho8_1280.png" class="img-responsive" />
+    </div>
+    <div id="gctLogo">
+        <img src="https://68.media.tumblr.com/ee13b1e2eb9f0d87fe63e228fe1557d5/tumblr_oafzzfCpXb1rg6icho9_1280.png" class="img-responsive" />
+    </div>
+    <div id="gctMenu">
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="/">Home</a></li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Links Importantes <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://magic-anon-oficial-gct.tumblr.com/">M!A</a></li>
+                    <li><a href="/historico">Histórico de Entrega de Pontos</a></li>
+                    <li><a href="/ask">Contato/Dúvidas</a></li>
+                    <li><a href="http://inventario-gct.tumblr.com/">Inventário GCT</a></li>
+                    <li><a href="/diario">Diário</a></li>
+                    <li><a href="/submit">Caixa de Sugestões</a></li>
+		    <li><a href="http://gct-mod.tumblr.com/mapas">Mapa Mundi</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sistemas Variados <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/private/31203963128/tumblr_ma3bxyZirg1rg6ich">Quest Board</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/coliseum">Coliseu (e Ranking)</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/85089156985/tumblr_n58kemwPix1rg6ich">Seja o Boss!</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/85987726815/tumblr_n5pi8fGtWT1rg6ich">Closet Visual</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/142206658850/tumblr_o530yc9cgN1rg6ich">Reputação</a></li>
+					<li><a href="http://gct-mod.tumblr.com/potencial">Potencial</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Missão <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/private/85537884395/tumblr_n5h1fi0zZq1rg6ich">Regras de Missão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/46638465034/tumblr_mkgdekUBFj1rg6ich">Regras de Buff/Debuff</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/136772357145/tumblr_o0jzb6oC8r1rg6ich">Inventário de Missão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/85536622075/tumblr_n5h0lxGXyW1rg6ich">Troca de Armas</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31209354410/tumblr_ma3fns9On61rg6ich">Itens de Missão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/136776962620/tumblr_o0k2mdmmbo1rg6ich">Luta em Missão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/46741956301/tumblr_mkiixuNqbA1rg6ich">Sistema de Duplas</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lojas <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/private/142208582180/tumblr_o532ugI9H11rg6ich">Reputação</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/potion">Itens de Missão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/armor">Armaduras</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/arena">Coliseu</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/petshop">Pet Shop</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/cupons">Cupons</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/102925374165/tumblr_n5v097MEnr1rg6ich">Artigos Mágicos</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/reembolso">Sistema de Reembolso</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Personagens <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/personagens">Pontuação</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/fichas">Status Padrão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31199188112/tumblr_ma36pe1Xao1rg6ich">Modelo de Ficha</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31199177135/tumblr_ma385aaoDJ1rg6ich">Lista de Personagens Disponíveis</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31159954193/tumblr_ma23ds0Ew41rg6ich">Escolha seu Personagem!</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Mascotes <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/private/31159458726/tumblr_ma230sT5hG1rg6ich">Regras de Obtenção</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31159497427/tumblr_ma231tKq6C1rg6ich">Lista de Etapas</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31202690742/tumblr_ma3b0citSa1rg6ich">Lista de Mascotes Disponíveis</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31197518409/tumblr_ma36l3ZWlA1rg6ich">Sistema de Evolução</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Turno Livre <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/private/85986773110/tumblr_n5phbnut4q1rg6ich">Tempo de Turno</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/QG">Plantas do QG</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#gerador">Gerador de Turno</a></li>
+                </ul>
+            </li>
+        </ul>
+
+<center>                {block:Pagination}
+<div id="pagination">
+
+
+      {block:PreviousPage}
+            <a href="{PreviousPage}">⇠</a>
+      {/block:PreviousPage}
+
+      {block:JumpPagination length="3"}
+            {block:CurrentPage}
+                  <span class="current_page">{PageNumber}</span>
+            {/block:CurrentPage}
+
+            {block:JumpPage}
+                  <a class="jump_page" href="{URL}">{PageNumber}</a>
+            {/block:JumpPage}
+      {/block:JumpPagination}
+
+      {block:NextPage}
+            <a href="{NextPage}">⇢</a>
+      {/block:NextPage}
+</div>
+{/block:Pagination}
+    </center>
+    </div>
+
+
+
+    <div id="content" class="panel panel-default">
+                    <div class="panel-body">
+                   <table id="example" class="table table-striped table-bordered" width="100%">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>FOR</th>
+                <th>DEX</th>
+                <th>CON</th>
+                <th>WIS</th>
+                <th>INT</th>
+                <th>CAR</th>
+                <th>VON</th>
+                <th>ATK</th>
+                <th>DEF</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Elesis</th>
+                <th data-toggle="modal" data-target="#forca">***</th>
+                <th data-toggle="modal" data-target="#destreza">***</th>
+                <th data-toggle="modal" data-target="#constituicao">***</th>
+                <th data-toggle="modal" data-target="#sabedoria">**</th>
+                <th data-toggle="modal" data-target="#inteligencia">***</th>
+                <th data-toggle="modal" data-target="#carisma">***</th>
+                <th data-toggle="modal" data-target="#vontade">***</th>
+                <th data-toggle="modal" data-target="#ataque">***>***</th>
+                <th data-toggle="modal" data-target="#defesa">**>***</th>
+            </tr>
+            <tr>
+                <th>Lire</th>
+                <th data-toggle="modal" data-target="#forca">**</th>
+                <th data-toggle="modal" data-target="#destreza">****</th>
+                <th data-toggle="modal" data-target="#constituicao">**</th>
+                <th data-toggle="modal" data-target="#sabedoria">****</th>
+                <th data-toggle="modal" data-target="#inteligencia">***</th>
+                <th data-toggle="modal" data-target="#carisma">***</th>
+                <th data-toggle="modal" data-target="#vontade">**</th>
+                <th data-toggle="modal" data-target="#ataque">***>****</th>
+                <th data-toggle="modal" data-target="#defesa">*>**</th>
+            </tr>
+            <tr>
+                <th>Arme</th>
+                <th data-toggle="modal" data-target="#forca">*</th>
+                <th data-toggle="modal" data-target="#destreza">**</th>
+                <th data-toggle="modal" data-target="#constituicao">*</th>
+                <th data-toggle="modal" data-target="#sabedoria">****</th>
+                <th data-toggle="modal" data-target="#inteligencia">****</th>
+                <th data-toggle="modal" data-target="#carisma">***</th>
+                <th data-toggle="modal" data-target="#vontade">***</th>
+                <th data-toggle="modal" data-target="#ataque">*>****</th>
+                <th data-toggle="modal" data-target="#defesa">**>****</th>
+            </tr>
+            <tr>
+                <th>Lass</th>
+                <th data-toggle="modal" data-target="#forca">**</th>
+                <th data-toggle="modal" data-target="#destreza">****</th>
+                <th data-toggle="modal" data-target="#constituicao">**</th>
+                <th data-toggle="modal" data-target="#sabedoria">**</th>
+                <th data-toggle="modal" data-target="#inteligencia">**</th>
+                <th data-toggle="modal" data-target="#carisma">*</th>
+                <th data-toggle="modal" data-target="#vontade">*</th>
+                <th data-toggle="modal" data-target="#ataque">****>*</th>
+                <th data-toggle="modal" data-target="#defesa">***>*</th>
+            </tr>
+            <tr>
+                <th>Ryan</th>
+                <th data-toggle="modal" data-target="#forca">****</th>
+                <th data-toggle="modal" data-target="#destreza">**</th>
+                <th data-toggle="modal" data-target="#constituicao">****</th>
+                <th data-toggle="modal" data-target="#sabedoria">****</th>
+                <th data-toggle="modal" data-target="#inteligencia">*</th>
+                <th data-toggle="modal" data-target="#carisma">**</th>
+                <th data-toggle="modal" data-target="#vontade">**</th>
+                <th data-toggle="modal" data-target="#ataque">***>***</th>
+                <th data-toggle="modal" data-target="#defesa">***>**</th>
+            </tr>
+            <tr>
+                <th>Ronan</th>
+                <th data-toggle="modal" data-target="#forca">***</th>
+                <th data-toggle="modal" data-target="#destreza">***</th>
+                <th data-toggle="modal" data-target="#constituicao">***</th>
+                <th data-toggle="modal" data-target="#sabedoria">***</th>
+                <th data-toggle="modal" data-target="#inteligencia">****</th>
+                <th data-toggle="modal" data-target="#carisma">***</th>
+                <th data-toggle="modal" data-target="#vontade">****</th>
+                <th data-toggle="modal" data-target="#ataque">**>***</th>
+                <th data-toggle="modal" data-target="#defesa">***>****</th>
+            </tr>
+            <tr>
+                <th>Amy</th>
+                <th data-toggle="modal" data-target="#forca">**</th>
+                <th data-toggle="modal" data-target="#destreza">**</th>
+                <th data-toggle="modal" data-target="#constituicao">**</th>
+                <th data-toggle="modal" data-target="#sabedoria">**</th>
+                <th data-toggle="modal" data-target="#inteligencia">**</th>
+                <th data-toggle="modal" data-target="#carisma">****</th>
+                <th data-toggle="modal" data-target="#vontade">***</th>
+                <th data-toggle="modal" data-target="#ataque">**>***</th>
+                <th data-toggle="modal" data-target="#defesa">**>*</th>
+            </tr>
+            <tr>
+                <th>Jin</th>
+                <th data-toggle="modal" data-target="#forca">****</th>
+                <th data-toggle="modal" data-target="#destreza">***</th>
+                <th data-toggle="modal" data-target="#constituicao">****</th>
+                <th data-toggle="modal" data-target="#sabedoria">**</th>
+                <th data-toggle="modal" data-target="#inteligencia">*</th>
+                <th data-toggle="modal" data-target="#carisma">*</th>
+                <th data-toggle="modal" data-target="#vontade">**</th>
+                <th data-toggle="modal" data-target="#ataque">****>**</th>
+                <th data-toggle="modal" data-target="#defesa">***>*</th>
+            </tr>
+            <tr>
+                <th>Sieghart</th>
+                <th data-toggle="modal" data-target="#forca">****</th>
+                <th data-toggle="modal" data-target="#destreza">***</th>
+                <th data-toggle="modal" data-target="#constituicao">****</th>
+                <th data-toggle="modal" data-target="#sabedoria">***</th>
+                <th data-toggle="modal" data-target="#inteligencia">**</th>
+                <th data-toggle="modal" data-target="#carisma">****</th>
+                <th data-toggle="modal" data-target="#vontade">***</th>
+                <th data-toggle="modal" data-target="#ataque">****>***</th>
+                <th data-toggle="modal" data-target="#defesa">****>**</th>
+            </tr>
+            <tr>
+                <th>Mari</th>
+                <th data-toggle="modal" data-target="#forca">*</th>
+                <th data-toggle="modal" data-target="#destreza">*</th>
+                <th data-toggle="modal" data-target="#constituicao">*</th>
+                <th data-toggle="modal" data-target="#sabedoria">**</th>
+                <th data-toggle="modal" data-target="#inteligencia">****</th>
+                <th data-toggle="modal" data-target="#carisma">***</th>
+                <th data-toggle="modal" data-target="#vontade">**</th>
+                <th data-toggle="modal" data-target="#ataque">***>****</th>
+                <th data-toggle="modal" data-target="#defesa">*>****</th>
+            </tr>
+            <tr>
+                <th>Dio</th>
+                <th data-toggle="modal" data-target="#forca">***</th>
+                <th data-toggle="modal" data-target="#destreza">***</th>
+                <th data-toggle="modal" data-target="#constituicao">****</th>
+                <th data-toggle="modal" data-target="#sabedoria">****</th>
+                <th data-toggle="modal" data-target="#inteligencia">**</th>
+                <th data-toggle="modal" data-target="#carisma">*</th>
+                <th data-toggle="modal" data-target="#vontade">***</th>
+                <th data-toggle="modal" data-target="#ataque">***>****</th>
+                <th data-toggle="modal" data-target="#defesa">***>****</th>
+            </tr>
+            <tr>
+                <th>Zero</th>
+                <th data-toggle="modal" data-target="#forca">****</th>
+                <th data-toggle="modal" data-target="#destreza">***</th>
+                <th data-toggle="modal" data-target="#constituicao">****</th>
+                <th data-toggle="modal" data-target="#sabedoria"></th>
+                <th data-toggle="modal" data-target="#inteligencia">***</th>
+                <th data-toggle="modal" data-target="#carisma"></th>
+                <th data-toggle="modal" data-target="#vontade">*</th>
+                <th data-toggle="modal" data-target="#ataque">****>***</th>
+                <th data-toggle="modal" data-target="#defesa">****>*</th>
+            </tr>
+            <tr>
+                <th>Rey</th>
+                <th data-toggle="modal" data-target="#forca">*</th>
+                <th data-toggle="modal" data-target="#destreza">**</th>
+                <th data-toggle="modal" data-target="#constituicao">*</th>
+                <th data-toggle="modal" data-target="#sabedoria">*</th>
+                <th data-toggle="modal" data-target="#inteligencia">****</th>
+                <th data-toggle="modal" data-target="#carisma">****</th>
+                <th data-toggle="modal" data-target="#vontade">****</th>
+                <th data-toggle="modal" data-target="#ataque">*>****</th>
+                <th data-toggle="modal" data-target="#defesa">**>**</th>
+            </tr>
+            <tr>
+                <th>Lupus</th>
+                <th data-toggle="modal" data-target="#forca">**</th>
+                <th data-toggle="modal" data-target="#destreza">****</th>
+                <th data-toggle="modal" data-target="#constituicao">***</th>
+                <th data-toggle="modal" data-target="#sabedoria">***</th>
+                <th data-toggle="modal" data-target="#inteligencia">***</th>
+                <th data-toggle="modal" data-target="#carisma">***</th>
+                <th data-toggle="modal" data-target="#vontade">**</th>
+                <th data-toggle="modal" data-target="#ataque">****>*</th>
+                <th data-toggle="modal" data-target="#defesa">***>***</th>
+            </tr>
+            <tr>
+                <th>Lin</th>
+                <th data-toggle="modal" data-target="#forca">***</th>
+                <th data-toggle="modal" data-target="#destreza">**</th>
+                <th data-toggle="modal" data-target="#constituicao">**</th>
+                <th data-toggle="modal" data-target="#sabedoria">***</th>
+                <th data-toggle="modal" data-target="#inteligencia">***</th>
+                <th data-toggle="modal" data-target="#carisma">**</th>
+                <th data-toggle="modal" data-target="#vontade">***</th>
+                <th data-toggle="modal" data-target="#ataque">**>**</th>
+                <th data-toggle="modal" data-target="#defesa">***>**</th>
+            </tr>
+            <tr>
+                <th>Azin</th>
+                <th data-toggle="modal" data-target="#forca">***</th>
+                <th data-toggle="modal" data-target="#destreza">****</th>
+                <th data-toggle="modal" data-target="#constituicao">****</th>
+                <th data-toggle="modal" data-target="#sabedoria">***</th>
+                <th data-toggle="modal" data-target="#inteligencia">**</th>
+                <th data-toggle="modal" data-target="#carisma">****</th>
+                <th data-toggle="modal" data-target="#vontade">***</th>
+                <th data-toggle="modal" data-target="#ataque">****>***</th>
+                <th data-toggle="modal" data-target="#defesa">***>**</th>
+            </tr>
+            <tr>
+                <th>Holy</th>
+                <th data-toggle="modal" data-target="#forca">****</th>
+                <th data-toggle="modal" data-target="#destreza">**</th>
+                <th data-toggle="modal" data-target="#constituicao">****</th>
+                <th data-toggle="modal" data-target="#sabedoria">**</th>
+                <th data-toggle="modal" data-target="#inteligencia">***</th>
+                <th data-toggle="modal" data-target="#carisma">**</th>
+                <th data-toggle="modal" data-target="#vontade">****</th>
+                <th data-toggle="modal" data-target="#ataque">**>**</th>
+                <th data-toggle="modal" data-target="#defesa">****>****</th>
+            </tr>
+            <tr>
+                <th>Edel</th>
+                <th data-toggle="modal" data-target="#forca">**</th>
+                <th data-toggle="modal" data-target="#destreza">****</th>
+                <th data-toggle="modal" data-target="#constituicao">**</th>
+                <th data-toggle="modal" data-target="#sabedoria">***</th>
+                <th data-toggle="modal" data-target="#inteligencia">***</th>
+                <th data-toggle="modal" data-target="#carisma">***</th>
+                <th data-toggle="modal" data-target="#vontade">***</th>
+                <th data-toggle="modal" data-target="#ataque">**>***</th>
+                <th data-toggle="modal" data-target="#defesa">***>**</th>
+            </tr>
+            <tr>
+                <th>Veigas</th>
+                <th data-toggle="modal" data-target="#forca">*</th>
+                <th data-toggle="modal" data-target="#destreza">***</th>
+                <th data-toggle="modal" data-target="#constituicao">*</th>
+                <th data-toggle="modal" data-target="#sabedoria">*</th>
+                <th data-toggle="modal" data-target="#inteligencia">***</th>
+                <th data-toggle="modal" data-target="#carisma">*</th>
+                <th data-toggle="modal" data-target="#vontade">****</th>
+                <th data-toggle="modal" data-target="#ataque">**>****</th>
+                <th data-toggle="modal" data-target="#defesa">**>**</th>
+            </tr>
+            <tr>
+                <th>Uno</th>
+                <th data-toggle="modal" data-target="#forca">****</th>
+                <th data-toggle="modal" data-target="#destreza">***</th>
+                <th data-toggle="modal" data-target="#constituicao">*</th>
+                <th data-toggle="modal" data-target="#sabedoria">*</th>
+                <th data-toggle="modal" data-target="#inteligencia">*</th>
+                <th data-toggle="modal" data-target="#carisma">**</th>
+                <th data-toggle="modal" data-target="#vontade">**</th>
+                <th data-toggle="modal" data-target="#ataque">***>***</th>
+                <th data-toggle="modal" data-target="#defesa">***>*</th>
+            </tr>
+            <tr>
+                <th>Kanji</th>
+                <th data-toggle="modal" data-target="#forca">**</th>
+                <th data-toggle="modal" data-target="#destreza">****</th>
+                <th data-toggle="modal" data-target="#constituicao">***</th>
+                <th data-toggle="modal" data-target="#sabedoria">***</th>
+                <th data-toggle="modal" data-target="#inteligencia">***</th>
+                <th data-toggle="modal" data-target="#carisma">***</th>
+                <th data-toggle="modal" data-target="#vontade">***</th>
+                <th data-toggle="modal" data-target="#ataque">**>****</th>
+                <th data-toggle="modal" data-target="#defesa">**>**</th>
+            </tr>
+	    <tr>
+		<th>Akihiko</th>
+                <th data-toggle="modal" data-target="#forca">**</th>
+                <th data-toggle="modal" data-target="#destreza">***</th>
+                <th data-toggle="modal" data-target="#constituicao">**</th>
+                <th data-toggle="modal" data-target="#sabedoria">***</th>
+                <th data-toggle="modal" data-target="#inteligencia">**</th>
+                <th data-toggle="modal" data-target="#carisma">****</th>
+                <th data-toggle="modal" data-target="#vontade">***</th>
+                <th data-toggle="modal" data-target="#ataque">****>*</th>
+                <th data-toggle="modal" data-target="#defesa">**>***</th>
+            </tr>
+        <tr>
+        <th>Euphie</th>
+        	<th data-toggle="modal" data-target="#forca">***</th>
+            <th data-toggle="modal" data-target="#destreza">***</th>
+            <th data-toggle="modal" data-target="#constituicao">***</th>
+            <th data-toggle="modal" data-target="#sabedoria">***</th>
+            <th data-toggle="modal" data-target="#inteligencia">***</th>
+            <th data-toggle="modal" data-target="#carisma">***</th>
+            <th data-toggle="modal" data-target="#vontade">***</th>
+            <th data-toggle="modal" data-target="#ataque">***>**</th>
+            <th data-toggle="modal" data-target="#defesa">***>**</th>
+        </tr>
+        <tr>
+        <th>Malygos</th>
+            <th data-toggle="modal" data-target="#forca">***</th>
+            <th data-toggle="modal" data-target="#destreza">***</th>
+            <th data-toggle="modal" data-target="#constituicao">***</th>
+            <th data-toggle="modal" data-target="#sabedoria">***</th>
+            <th data-toggle="modal" data-target="#inteligencia">***</th>
+            <th data-toggle="modal" data-target="#carisma">****</th>
+            <th data-toggle="modal" data-target="#vontade">***</th>
+            <th data-toggle="modal" data-target="#ataque">*>****</th>
+            <th data-toggle="modal" data-target="#defesa">*>***</th>
+        </tr>
+		<tr>
+        <th>Rupia</th>
+            <th data-toggle="modal" data-target="#forca">***</th>
+            <th data-toggle="modal" data-target="#destreza">****</th>
+            <th data-toggle="modal" data-target="#constituicao">**</th>
+            <th data-toggle="modal" data-target="#sabedoria">***</th>
+            <th data-toggle="modal" data-target="#inteligencia">***</th>
+            <th data-toggle="modal" data-target="#carisma">****</th>
+            <th data-toggle="modal" data-target="#vontade">***</th>
+            <th data-toggle="modal" data-target="#ataque">****>*</th>
+            <th data-toggle="modal" data-target="#defesa">***>*</th>
+        </tr>
+		<tr>
+        <th>Nek</th>
+            <th data-toggle="modal" data-target="#forca">*</th>
+            <th data-toggle="modal" data-target="#destreza">****</th>
+            <th data-toggle="modal" data-target="#constituicao">****</th>
+            <th data-toggle="modal" data-target="#sabedoria">***</th>
+            <th data-toggle="modal" data-target="#inteligencia">****</th>
+            <th data-toggle="modal" data-target="#carisma">***</th>
+            <th data-toggle="modal" data-target="#vontade">***</th>
+            <th data-toggle="modal" data-target="#ataque">***>**</th>
+            <th data-toggle="modal" data-target="#defesa">***>*</th>
+        </tr>
+		<tr>
+        <th>Nek + Robô</th>
+            <th data-toggle="modal" data-target="#forca">****</th>
+            <th data-toggle="modal" data-target="#destreza">*</th>
+            <th data-toggle="modal" data-target="#constituicao">*</th>
+            <th data-toggle="modal" data-target="#sabedoria">***</th>
+            <th data-toggle="modal" data-target="#inteligencia">****</th>
+            <th data-toggle="modal" data-target="#carisma">***</th>
+            <th data-toggle="modal" data-target="#vontade">***</th>
+            <th data-toggle="modal" data-target="#ataque">****>****</th>
+            <th data-toggle="modal" data-target="#defesa">**>**</th>
+        </tr>
+        </tbody>
+    </table>
+            </div>
+        </div>
+
+
+      <!-- FOR -->
+  <div class="modal fade" id="forca" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Atributo Força</h4>
+        </div>
+        <div class="modal-body">
+          <p>Força mede a quantidade de músculos e poder físico de seu personagem. A habilidade é especialmente importante porque ajuda seu personagem a prevalecer em uma batalha corpo a corpo. Força também determina quanto seu personagem é capaz de carregar, seja em equipamento ou objetos em geral.</p>
+          <p>Normalmente é aplicado o modificador de força em:</p>
+          <li>Ataques melee</li>
+          <li>Escalada</li>
+          <li>Pular</li>
+          <li>Nadar (com ou sem equipamento)</li>
+          <li>Quebrar portas e/ou destruir coisas</li>
+          <br><p>Qualquer criatura que é capaz de fisicamente manipular algum objeto tem pelo menos * de força. Uma criatura que não possui atributo de força não possui corpo físico ou não pode se mover.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+          <!-- DEX -->
+  <div class="modal fade" id="destreza" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Atributo Destreza</h4>
+        </div>
+        <div class="modal-body">
+          <p>Destreza mede a coordenação "olhos-mão", como agilidade, reflexos e equilíbrio. Essa habilidade é muito útil para ladinos, qualquer personagem que use armaduras leves e/ou não usem armaduras, ou qualquer personagem que gostaria de ser um arqueiro.</p>
+          <p>Normalmente é aplicado o modificador de destreza em:</p>
+          <li>Ataques de longa distância</li>
+          <li>Quão rápido um personagem pode reagir a um ataque</li>
+          <li>Reflexo; Habilidade de desviar de alguma coisa que pode ser desviada com muita agilidade</li>
+          <li>Equilíbrio</li>
+          <li>Esconder-se</li>
+          <li>Mover-se em silêncio</li>
+          <li>Abrir trancas</li>
+          <li>Andar a cavalo</li>
+          <li>Utilização de corda, correntes, etc.</li>
+          <li>Roubar itens pequenos</li>
+          <li>Queda suave de locais não muito altos ou quando tropeçar em alguma coisa</li>
+          <br>
+          <p>Qualquer criatura que pode se mover tem ao menos * de destreza. Uma criatura que não tem destreza não pode se mover, contudo pode realizar ações como castar magias.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+          <!-- CON -->
+  <div class="modal fade" id="constituicao" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Atributo Constituição</h4>
+        </div>
+        <div class="modal-body">
+          <p>Constituição representa a vida e a stamina de seu personagem.</p>
+          <p>Normalmente é aplicado o modificador de constituição em:</p>
+          <li>Resistir poções, venenos, ou qualquer outra coisa similar</li>
+          <li>Concentração; a habilidade de focar sua mente mesmo quando o ambiente ao redor é distrativo</li>
+          <li>Correr longas distâncias</li>
+          <li>Resistir a um ferimento grande</li>
+          <li>Aguentar a dor de ferimentos para a possibilidade de continuar lutando</li>
+          <br><p>Qualquer criatura viva tem ao menos * de constituição. Uma criatura sem constituição não tem corpo ou não possui metabolismo. É imune a qualquer dano, a perda de vida ou stamina e falha automaticamente em qualquer check de constituição. Uma criatura sem constituição não pode se cansar, portanto pode correr indefinidamente (ou lutar sem pausas).</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+          <!-- WIS -->
+  <div class="modal fade" id="sabedoria" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Atributo Sabedoria</h4>
+        </div>
+        <div class="modal-body">
+          <p>Sabedoria descreve a força de vontade, senso comum, percepção e intuição do seu personagem. Enquanto inteligência representa a habilidade de analisar informação, sabedoria representa estar em contato e perceptivo com seus arredores. Sabedoria é uma habilidade importante se você quer que seu personagem tenha sentidos agudos - bem treinados.</p>
+          <p>Normalmente é aplicado o modificador de sabedoria em:</p>
+          <li>Curar</li>
+          <li>Ouvir</li>
+          <li>Entender motivação</li>
+          <li>Encontrar (objeto ou criatura)</li>
+          <li>Sobreviver</li>
+          <li>Também é diretamente ligado com a habilidade Vontade</li>
+          <br><p>Qualquer criatura que é capaz de perceber o ambiente tem ao menos * de sabedoria. Qualquer coisa sem sabedoria é um objeto, não uma criatura. Qualquer coisa sem sabedoria, também não possui carisma.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+          <!-- INT -->
+  <div class="modal fade" id="inteligencia" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Atributo Inteligência</h4>
+        </div>
+        <div class="modal-body">
+          <p>Inteligência determina quão bem seu personagem aprende e raciocina. Essa habilidade é importante para magos porque afeta em quão bem sabem usar suas magias, quantas magias sabem e como podem se defender delas.</p>
+          <p>Normalmente é aplicado o modificador de inteligência em:</p>
+          <li>O número de linguagens que o personagem sabe e/ou pode aprender</li>
+          <li>Analisar um objeto</li>
+          <li>Criar objetos</li>
+          <li>Decifrar encantações e/ou livros antigos</li>
+          <li>Desativar qualquer tipo de dispositivo</li>
+          <li>Saber forjar coisas</li>
+          <li>Conhecimento em geral</li>
+          <li>Busca de coisas em geral</li>
+          <li>Criação de novas magias</li>
+          <br><p>Qualquer criatura que pode pensar, aprender ou lembrar de coisas tem ao menos * de inteligência. Uma criatura que não tem inteligência não possui uma mente, opera em instintos básicos ou instruções programadas e é imune a qualquer efeito de mente (encantar, compulsão, padrões, fantasmas, morais, etc) e automaticamente falha em checks de inteligência.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+          <!-- CAR -->
+  <div class="modal fade" id="carisma" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Atributo Carisma</h4>
+        </div>
+        <div class="modal-body">
+        <p>Carisma mede a força da personalidade do seu personagem, assim como sua persuação, atração, habilidade para liderar e beleza. A habilidade representa a real força de sua personalidade e não somente como os outros reparam no personagem.</p>
+        <p>Normalmente é aplicado o modificador de carisma em:</p>
+        <li>Blefar</li>
+        <li>Diplomacia</li>
+        <li>Disfarçar-se</li>
+        <li>Obter informação</li>
+        <li>Lidar com animais</li>
+        <li>Intimidar</li>
+        <li>Fazer uma performance.</li>
+        <li>Tentar influenciar outros</li>
+        <br><p>Qualquer criatura que seja capaz de dizer a diferença entre si mesma e objetos possui ao menos * de carisma. Qualquer coisa sem carisma é, então, vista como um objeto, não criatura. Qualquer coisa que não possua carisma, também não possui sabedoria.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+          <!-- VON -->
+  <div class="modal fade" id="vontade" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Atributo Vontade</h4>
+        </div>
+        <div class="modal-body">
+          <p>Geralmente quando você está sujeito à um ataque mágico, você pode tentar salvar-se deste ou reduzir seu efeito. A vontade reflete sua habilidade em resistir controle mental ou qualquer outro efeito de magia.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+          <!-- ATK -->
+  <div class="modal fade" id="ataque" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Atributo Ataque (Físico e Mágico)</h4>
+        </div>
+        <div class="modal-body">
+            <p align="center">FÍSICO>MÁGICO</p>
+         <p>Ataque F&iacute;sicos: Poder de ataque do personagem, meios de como ele(a) causa dano, ou o que &eacute; capaz de fazer.</p>
+         <p>Ataque M&aacute;gicos: Poderes m&aacute;gicos inatos ou adquiridos, magias em geral, seja elas ofensivas, defensivas ou utilit&aacute;rias.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+          <!-- DEF -->
+  <div class="modal fade" id="defesa" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Atributo Defesa (Física e Mágica)</h4>
+        </div>
+        <div class="modal-body">
+            <p align="center">FÍSICO>MÁGICO</p>
+          <p>Defesas F&iacute;sicas: Capacidade de aguentar ou evitar dano, meios que o personagem pode usar para se defender, resist&ecirc;ncia a veneno e doen&ccedil;as, e sa&uacute;de.</p>
+            <p>Resist&ecirc;ncias M&aacute;gicas: Efeitos que o personagem pode aguentar/ignorar em quest&atilde;o de magia.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+              <div class="modal fade" id="gerador" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content modal-lg">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Gerador de Turnos</h4>
+        </div>
+        <div class="modal-body" style="height: 40vh;">
+           <iframe src="http://gct-mod.tumblr.com/gerador"  height="100%" width="100%" frameBorder="0"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+</body>
+</html>

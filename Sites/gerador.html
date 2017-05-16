@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" type="text/javascript"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<title>Gerador de Turnos</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+
+	<script>
+
+      function doStuff() {
+            var X = document.getElementById("Input1").value;
+			var Y = document.getElementById("Input2").value;
+
+			var JUMNUM = Math.floor((Math.random()*2));
+			var SWITCHER = 0;
+
+			if (JUMNUM == 1) {
+				SWITCHER = X;
+				X = Y;
+				Y = SWITCHER;
+			}
+
+			var RANDNUM = Math.floor(Math.random()*141); //sempre o numero do array+1
+
+			var ar = new Array();
+
+			ar[0] = X + " fez uma armadilha para " + Y + " por vingança.";
+			ar[1] = X + " acabou discutindo com " + Y + ".";
+			ar[2] = X + " junto com o(a) " + Y + " achou vários gatinhos perdidos em Canaban.";
+			ar[3] = X + " junto com o(a) " + Y + "  achou vários cachorrinhos perdidos em Serdin.";
+			ar[4] = X + " está irritada(o) com " + Y + " e foi espairecer no jardim.";
+			ar[5] = X + " observou " + Y + " tendo atitudes estranhas, resolveu investigar.";
+			ar[6] = X + " está na enfermaria ajudando " + Y + " com suas ataduras.";
+			ar[7] = X + " estava perdido(a) na floresta e acabou encontrando com "+ Y + ", mas acabou não ajudando muito.";
+			ar[8] = X + " resolve jogar um jogo de cartas/tabuleiro com " + Y + ".";
+			ar[9] = X + " e " + Y  + " resolvem treinar de maneira amigável.  ";
+			ar[10] = X + " não para de pensar em " + Y + " sentindo-se ansioso(a) para vê-lo(a) novamente.";
+			ar[11] = X + " está com sono, mas " + Y + " não quer deixá-lo dormir.";
+			ar[12] = X + " sente-se meio depressivo. " + Y + " percebe a aura estranha e resolve tentar conversar um pouco.";
+			ar[13] = X + " está na sala quando " + Y + " aparece e ambos tem uma conversa agradável sobre o que a Grand Chase representa.";
+			ar[14] = X + " está morrendo de sono, mas " + Y + " quer conversar mais um pouco";
+			ar[15] = X + " e " + Y + " encontram-se com saudades depois de não se verem por um longo período.";
+			ar[16] = X + " e " + Y + " estão assistindo o pôr do sol. " + X + " está com bastante sono.";
+			ar[17] = X + " e " + Y + " estão assistindo o amanhecer. " + X + " está cheio de segundas intenções.";
+			ar[18] = X + " e " + Y + " resolvem ir até Canaban/Serdin fazer compras.";
+			ar[19] = X + " está preocupado(a) com " + Y + " que ainda não voltou da missão.";
+			ar[20] = X + " e " + Y + " fugiram de Elesis quando ela veio verificar quem não estava fazendo missão.";
+			ar[21] = X + " olhava a janela entediado(a) quando " + Y + " aparece repentinamente e assusta " + X + ".";
+			ar[22] = X + " e " + Y + " resolvem ir à praia.";
+			ar[23] = X + " decide se sentar na beira do rio " + Y + " acaba se aproximando ao vê-lo(a) sozinho(a).";
+			ar[24] = X + " e " + Y + " resolvem almoçar/jantar juntos.";
+			ar[25] = X + " está observando as estrelas no meio da noite, " + Y + " que estava insone resolve se juntar à ele(a)";
+			ar[26] = X + " e " + Y + " apreciam o silêncio apaziguador da chuva juntos, depois de um tempo uma conversa natural sobre seus sonhos surge.";
+			ar[27] = X + " está ajudando " + Y + " com suas tarefas no QG.";
+			ar[28] = X + " está pronto(a) para fazer algo realmente estúpido. " + Y + " apenas observa, esperando pelo desastre.";
+			ar[29] = X + " perdeu uma de suas coisas preferidas, " + Y + " é o culpado, mas finge que não, e oferece ajuda para encontrar o que foi perdido.";
+			ar[30] = X + " está desenhando " + Y + ".";
+			ar[31] = X + " e " + Y + " estão podando algumas árvores próximas ao QG";
+			ar[32] = X + " e " + Y + " resolvem fazer uma faxina geral no QG.";
+			ar[33] = X + " descobre que " + Y + " é uma pessoa  realmente importante.";
+			ar[34] = X + " e " + Y + " atacam Sieghart quando o veem com um bisturi.";
+			ar[35] = X + " está confortando " + Y + " sobre o fato que " + Y + " não consegue estar em um relacionamento por muito tempo.";
+			ar[36] = X + " conta um segredo para " + Y + ".";
+			ar[37] = X + " está incomumente triste e " + Y + " tenta ajudá-lo(a).";
+			ar[38] = X + " resolveu que junto com " + Y + " ia aprontar com todos no QG.";
+			ar[39] = X + " e " + Y + " acabam se perdendo nas cordilheiras de Vermécia e demoram para voltar ao QG.";
+			ar[40] = X + " e " + Y + " se descobrem rivais sobre um amor em comum. No final a pessoa não fica com nenhum dos dois/duas e a rivalidade vira uma amizade incomum.";
+			ar[41] = X + " e " + Y + " trombam no corredor de madrugada.";
+			ar[42] = X + " e " + Y + " resolvem ir à uma taberna beber. " + Y + " fica bêbado(a) demais e " + X + " teve que carregá-lo de volta para o QG.";
+			ar[43] = X + " suspeita nutrir um amor por " + Y + " e tem medo que "+ Y + " possa vir a se machucar.";
+			ar[44] = X + " e " + Y + " pegam a mesma quest juntos(as) e não estão contentes em fazê-la um com o outro.";
+			ar[45] = X + " acidentalmente bebe uma das poções da Arme e cai de amores por " + Y + ".";
+			ar[46] = X + " escorrega e cai da escada, batendo a cabeça e ficando com amnésia temporária. Quem o(a) resgata é " + Y + ".";
+			ar[47] = X + " invade o quarto de " + Y + " e ele(a) acaba pegando o(a) invasor(a) no ato.";
+			ar[48] = X + " consegue algo que " + Y + " realmente quer. " + X + " acaba resolvendo que vai abusar desse novo 'poder' que conseguiu.";
+			ar[49] = X + " ofendeu " + Y + " de alguma maneira e não percebeu isso.";
+			ar[50] = X + " e " + Y + " acabam encontrando com a rainha de Serdin/Canaban durante seu passeio por lá.";
+			ar[51] = X + " está feliz em ter encontrado " + Y + ", afinal tinha saudades de conversar com ele(a).";
+			ar[52] = X + " está descansando no QG quando de repente topa com " + Y + " que secretamente o(a) admira.";
+			ar[53] = X + " está tentando esconder um segredo de " + Y + ".";
+			ar[54] = X + " está constantemente sendo sacaneado(a) por " + Y + " e agora resolveu perturbá-lo(a) de volta.";
+			ar[55] = X + " é finalmente notado(a) por seu senpai, " + Y + ".";
+			ar[56] = X + " encontra um item que " + Y + " realmente queria e acaba comprando/pegando para dar de presente.";
+			ar[57] = X + " e " + Y + " fingem ser um casal para entrar em um evento em Serdin/Canaban e poderem fazer o que queriam lá dentro.";
+			ar[58] = X + " está envergonhado(a) de dizer o quanto admira " + Y + ".";
+			ar[59] = X + " e " + Y + " se unem para achar um mascote perdido dentro do QG.";
+			ar[60] = X + " e " + Y + " estão cansados e acabam discutindo para saber quem usará o banheiro primeiro - assim podendo tomar seus banhos e poderem dormir.";
+			ar[61] = X + " está muito nervoso(a) de se aproximar de " + Y + ", então o(a) observa distante.";
+			ar[62] = X + " e " + Y + " estão constantemente discutindo e, repentinamente, são obrigados à conversar e se resolver quando (algum chaser) os(as) tranca juntos dentro da dispensa.";
+			ar[63] = X + " leva " + Y + " ao seu restaurante/padaria favorito.";
+			ar[64] = X + " observa " + Y + " com mais atenção do que deveria, deixando " + Y + " desconfortável.";
+			ar[65] = X + " e " + Y + " salvam a vida de um animal.";
+			ar[66] = X + " e " + Y + " resolvem caçar alguma coisa para se alimentar.";
+			ar[67] = "Ainda com a profecia contada em suas ideias, " + X + " ainda mantem suas desconfianças para com " + Y + ".";
+			ar[68] = X + " e " + Y + " conversam sobre o lugar onde nasceram.";
+			ar[69] = X + " fica impressionado com uma habilidade que não sabia que  " + Y + " possuia.";
+			ar[70] = X + " está amaldiçoado(a) depois de cruzar com um mago não muito paciente em seu caminho de volta para o QG. " + Y + " resolve tentar ajudá-lo(a) a resolver a situação e livrar-se da maldição.";
+			ar[71] = X + " e " + Y + " resolvem jogar alguma coisa, mas acabam descobrindo que não há nada que agrade aos dois.";
+			ar[72] = X + " acha que está sozinho, então está dançando e cantando e " + Y + " acaba vendo a cena, deixando " + X + " realmente sem graça.";
+			ar[73] = X + " confessa seu amor para " + Y + ", mas acaba sendo rejeitado(a).";
+			ar[74] = X + " e " + Y + " conversam sobre seus gostos musicais.";
+			ar[75] = X + " conta à " + Y + " que frequentemente sonha com ele(a).";
+			ar[76] = X + " e " + Y + " ficam bêbados juntos. Na manhã seguinte acordam sem se lembrar se usaram ou não a camisinha.";
+			ar[77] = X + " e " + Y + " acabam algemados um ao outro por algemas mágicas... E o(a) dono(a) das algemas perdeu a chave.";
+			ar[78] = X + " está com problemas resolvendo alguma coisa e " + Y + " resolve auxiliar.";
+			ar[79] = X + " fica excitado(a) ao observar " + Y +", mas não deixa com que ele(a) note.";
+			ar[80] = X + " está realmente assustado(a) com um sonho ruim e " + Y + " acorda com seus gritos, indo ver o que acontecia.";
+			ar[81] = X + " tenta se explicar para " + Y + " após ser pego fazendo algo que não deveria.";
+			ar[82] = X + " faz um crochê de um sueter horroroso e acaba forçando " + Y + " a usá-lo.";
+			ar[83] = X + " fica irritado(a) com a maneira de ser de " + Y + ".";
+			ar[84] = X + " perde uma aposta para " + Y + ".";
+			ar[85] = X + " e " + Y + " decidem acampar para poder treinar melhor." + Y + " acaba lendo o mapa de cabeça para baixo e ambos se perdem em Ellia.";
+			ar[86] = X + " ajuda " + Y + " a se arrumar para um baile de gala que terá em Serdin/Canaban.";
+			ar[87] = X + " e " + Y + " aproveitam a brisa tranquila na beira do lago."; 
+			ar[88] = X + " e " + Y + " são pegos desprevenidos por uma chuva forte e acabam tendo que se hospedar em uma taberna. Sem muito dinheiro, alugam um só quarto e discutem sobre quem vai dormir na cama e quem vai dormir no chão.";
+			ar[89] = X + " ajuda " + Y + " a treinar novos golpes.";
+			ar[90] = X + " e " + Y + " querem sair em uma missão, mas " + Y + " não consegue por nada achar as coisas que precisa e " + X + " acaba tendo que ajudar ele(a) a procurar suas coisas.";
+			ar[91] = X + " e " + Y + " assistem à uma explosão de fogos juntos em Serdin/Canaban.";
+			ar[92] = X + " inventa de roubar algumas riquezas de " + Y + " e acaba ficando preso dentro do guarda roupa quando " + Y + " entra no quarto repentinamente.";
+			ar[93] = X + " ajuda " + Y + " com algumas coisas sob a promessa de ganhar algo de seu agrado depois.";
+			ar[94] = X + " e " + Y + " resolvem jogar strip poker.";
+			ar[95] = Y + " está tendo uma crise de pânico por algum motivo, "+ X +" acaba sugerindo sexo. Apesar de não aceitar, "+ Y + " não para de pensar que teria sido uma ótima ideia.";
+			ar[96] = X + " quer 'experimentar', então convida "+ Y +" para uma noite de sexo selvagem.";
+			ar[97] = X + " vai para a cozinha preparar um bolo. O pobre coitado do(a) "+ Y + " acaba se tornando seu cobaia.";
+			ar[98] = X + " e " + Y + " foram para a missa de Ernasis.";
+			ar[99] = "De uma maneira desconhecida, " + X + " acaba indo parar no submundo e carrega "+ Y + " junto. No final das contas, Lupus tem que ir atrás deles(as)";
+			ar[100] = "Amy chama "+ X+ " e "+ Y + " para um dia de manicure.";
+			ar[101] = X + " está perseguindo um guaxinim que roubou suas coisas e esbarra em " + Y;
+			ar[102] = X + " e " + Y + " bebem todas e acordam em Ellyos sem se lembrar de como chegaram lá.";
+			ar[103] = X + " desafia " + Y + " a nadar pelado(a) no lago e quando " + Y + " aceita, Azin passa e rouba suas roupas sem ninguém ver.";
+			ar[104] = "Um dildo é achado no QG, cabe então a " + X + " e " + Y + " descobrirem a quem pertence.";
+			ar[105] = X + " resolve ensinar " + Y + " alguma coisa que conhece.";
+			ar[106] = "Algo perturbador e sobrenatural está ocorrendo no QG. Depois de horas de investigação " + X + " e " + Y + " descobrem que era apenas um esquilo... Enfeitiçado com uma poção roubada do estoque.";
+			ar[107] = X + " está machucado seriamente e recusando os tratamentos de " + Y + ", resta a ele(a) convencê-lo do contrário.";
+			ar[108] = X + " pede uma massagem para " + Y + " depois de um longo dia.";
+			ar[109] = X + " sozinho(a) no jardim, resolve fazer uma coroa de flores para " + Y + ".";
+			ar[110] = X + " entra em desespero ao ver uma aranha, escondendo-se atrás de " + Y + " enquanto este tenta matá-la.";
+			ar[111] = X + " e " + Y + " resolvem acender uma fogueira e assar alguns marshmellows.";
+			ar[112] = X + " e " + Y + " estão brincando de 'Quem ri primeiro'.";
+			ar[113] = "Está um dia lindo do lado de fora e " + X + " junto com " + Y + " resolvem fazer um piquenique do lado de fora.";
+			ar[114] = "Depois de uma longa bebedeira, " + X + " resolve invadir o quarto de " + Y + ".";
+			ar[115] = X + " e " + Y + " são obrigados por Elesis a darem um banho em Ryan que emana carniça pelo QG.";
+			ar[116] = X + " e " + Y + " passeavam quando veio uma tempestade e tiveram que se abrigar no primeiro local que encontraram, um bordel.";
+			ar[117] = X + " vê " + Y + " nu e fica com a imagem na cabeça. No final das contas decide que quer ter essa experiência novamente.";
+			ar[118] = X + " e " + Y + " enchem a cara, " + Y + " acaba se empolgando demais e faz um strip-tease para " + X + ". " + X + " adora a cena.";
+			ar[119] = X + " e " + Y + " resolver ir pescar no lago. " + Y + " pega algo incrivelmente grande e é sugado para dentro do lago, " + X + " então se joga na água para salva-lo(a).";
+			ar[120] = X + " quer se bronzear e pede ajuda pra " + Y + ".";
+			ar[121] = X + " acaba brigando com um gato, " + Y + " vê a cena e decide tentar ajudar. Ambos acabam arranhados pelo gato.";
+			ar[122] = X + " está tendo uma crise de gênero/idade e " + Y + " decide ajudar/piorar.";
+			ar[123] = X + " e "+ Y + " decidem ir para dentro de uma catacumba centenária porque vai ser muito divertido.";
+			ar[124] = X + " precisa fazer alguma coisa e pede para " + Y + " tomar conta de seu mascote.";
+			ar[125] = "Passando por uma das cidades, " + X + " e " + Y + " acabam cruzando com uma sexshop e resolvem entrar e ver quais são as mercadorias.";
+			ar[126] = "Entediados, " + X + " e " + Y + " resolvem acampar e contar histórias de terror entorno da fogueira.";
+			ar[127] = X + " e " + Y + " resolvem inovar e cozinhar algum novo tipo de carne, após a tentativa frustrada acabam colocando fogo no acampamento.";
+			ar[128] = X + " está cheio de cafeína e não consegue se acalmar. Quem continua o(a) atentando(a) é " + Y + ".";
+			ar[129] = X + " e " + Y + " roubam uma relíquia - por querer ou não.";
+			ar[130] = "Mini Elesis roubou a arma de " + X + ", " + Y + " acaba se condoendo e tenta ajudá-lo(a) a achar. É uma longa jornada rumo ao desconhecido e a criança não quer auxiliar.";
+			ar[131] = X + " faz uma torta para " + Y + ". A torta é de terra.";
+			ar[132] = X + " está cantando enquanto toma banho, " + Y + " escuta e resolve cantar junto. A cacofonia é horrível e gera boatos pela criadagem.";
+			ar[133] = X + " e " + Y + " percebem que há algo como uma consipiração acontecendo e resolvem conversar para tentar entender o que está acontecendo. Tudo começou quando viram Azin e Mini Elesis conversando através de sinais desconhecidos.";
+			ar[134] = X + " e " + Y + " se sentam no sofá do dormitório masculino para conversar um pouco. " + Y + " se senta e um som estridente de pum é audível. Alguém deixou uma almofada de pum no sofá.";
+			ar[135] = X + " e " + Y + " resolvem levar Ryan à biblioteca para ensiná-lo a ler.";
+			ar[136] = X + " e " + Y + " resolvem fazer uma competição de arroto. O perdedor tem que pagar uma prenda.";
+			ar[137] = X + " é desafiado por Azin a roubar as peças íntimas de " + Y + ".";
+			ar[138] = X + " e " + Y + " resolvem fazer uma guerra de mamonas";
+			ar[139] = X + " aplica uma chave de braço em " + Y + " e o faz beijar as roupas sujas de Ryan.";
+			ar[140] = X + " entra no quadro de " + Y + " e o pega em um ato constrangedor.";
+			
+			document.getElementById("someDiv").innerHTML = ar[RANDNUM];
+			document.getElementById("content").style.visibility = "visible";
+		}
+
+  </script>
+
+<style type="text/css">
+
+body {
+    background-color: transparent;
+}
+
+p {
+    font-family:Verdana;
+    color: #000;
+    font-size:12px;
+}
+
+#someDiv {
+    font-family: Verdana;
+}
+
+iframe {
+	display:none !important;
+}
+
+.form-control {
+    max-width: 80%;
+}
+
+#content {
+    max-width: 80%;
+}
+
+</style>
+    
+
+
+</head>
+    <body>
+    
+   <center> <button class="btn btn-warning" data-toggle="collapse" data-target="#instructions">Como Usar?</button></center>
+
+<div id="instructions" class="collapse" align="justify">
+Preencha os inputs abaixo com os nomes dos personagens quais estarão participando do turno (ao menos dois). Ao clicar no botão "Gerar!" você criará uma situação qual poderá ser usada no seu turno!<br>
+Existem situações específicas e outras quais vão depender de um personagem especial, mas lembre-se que o gerador é apenas um <em>guia</em>, você não é obrigado a seguir a risca a ideia aqui sugerida.
+</div>
+
+
+<p>        <form class="form-horizontal">
+ <label class="col-sm-2 control-label">Personagem 1</label>
+ <input id="Input1" class="form-control" type="text"><br>
+ <label class="col-sm-2 control-label">Personagem 2</label> <input id="Input2" class="form-control" type="text"><br>
+ <center> <input type="button" class="btn btn-info" value="Gerar!" onClick="doStuff()" ></center>
+   </form></p>
+<br>
+
+<center><div id="content" class="panel panel-success" style="visibility: hidden">
+      <div class="panel-heading">Resultado</div>
+      <div id="someDiv" class="panel-body"></div>
+    </div></center>
+</body>
+
+</html>

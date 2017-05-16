@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Diário GCT</title>
+	<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+	<style type="text/css">
+
+		.titleCalendar {
+			text-align: center;
+			font-size: 36px;
+			float: left;
+		}
+
+		.monthYear {
+			text-align: center;
+			font-size: 36px;
+			float: right;
+		}
+
+		#buttonC {
+			clear: both;
+			left: 10px;
+		}
+
+		#Calendar {
+			left: 0;
+			width: 100%;
+		}
+
+		#contentTable {
+			table-layout: fixed;
+			width: 100%;
+		}
+
+		#Cadastro {
+			clear: both;
+		}
+
+		#Cadastro select {
+			height: 200px;
+		}
+
+		.contentDiv {
+			height: 200px;
+			overflow: auto;
+		}
+
+		#nomeMembro {
+			margin-left: 10px;
+		}
+
+		body {
+			overflow: auto;
+		}
+
+		::-webkit-scrollbar {
+			width: 2px;
+			height: 2px;
+		}
+		::-webkit-scrollbar-button {
+			width: 0px;
+			height: 0px;
+		}
+		::-webkit-scrollbar-thumb {
+			background: #8000ff;
+			border: 0px none #ffffff;
+			border-radius: 0px;
+		}
+		::-webkit-scrollbar-thumb:hover {
+			background: #b66cff;
+		}
+		::-webkit-scrollbar-thumb:active {
+			background: #5800b0;
+		}
+		::-webkit-scrollbar-track {
+			background: #ffffff;
+			border: 0px none #ffffff;
+			border-radius: 50px;
+		}
+		::-webkit-scrollbar-track:hover {
+			background: #ffffff;
+		}
+		::-webkit-scrollbar-track:active {
+			background: #ffffff;
+		}
+		::-webkit-scrollbar-corner {
+			background: transparent;
+		}
+
+
+	</style>
+
+	<script>
+
+		var config = {
+			apiKey: "AIzaSyCazSpIzEHC21hyLUcBwSXQBfZOFLN5utg",
+			authDomain: "gc-tumblr.firebaseapp.com",
+			databaseURL: "https://gc-tumblr.firebaseio.com",
+			storageBucket: "gc-tumblr.appspot.com",
+			messagingSenderId: "922588699012"
+		};
+		firebase.initializeApp(config);
+
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = date.getMonth() + 1;
+		var maxDays;
+
+		var diary = {
+			1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: [], 10: [], 11: [], 12: [], 13: [], 14: [], 15: [],
+			16: [], 17: [], 18: [], 19: [], 20: [], 21: [], 22: [], 23: [], 24: [], 25: [], 26: [], 27: [], 28: [], 29: [], 
+			30: [], 31: []
+		}
+
+		var members = {};
+
+		function setTable () {
+			var content = "<table id='contentTable' class='table table-hover table-bordered'>";
+			for (var i = 1; i <= maxDays; i++) {
+				if ((i==1) || (i==11) || (i==21) || (i==31))
+					content += "<tr>";
+				content += "<td><center><strong>" + i + "</strong></center><br><div class='contentDiv'>";
+				for (var k = 0; k < diary[i].length; k++) {
+					content += diary[i][k] + "<br>";
+				}
+				content += "</div></td>";
+				if ((i==10) || (i==20) || (i==30) || (i==maxDays))
+					content += "</tr>";
+			}
+
+			content += "</table>";
+			document.getElementById("Calendar").innerHTML = content;
+			verifyMonth();
+		}
+
+		function exibeDados () {
+			var membersConsult = firebase.database().ref('/');
+			membersConsult.on ('value', function (GCT) {
+				GCT.forEach(function (member) {
+					if (member.val().valido == true) {
+						var count = 0;
+						var name = member.key;
+						var flag = 1;
+						var d1 = [], d2 = [], d3 = [], d4 = [];
+						var consult = firebase.database().ref('/' + name + "/" + year + "/" + month + '/');
+						consult.on('value', function (month) {
+							month.forEach (function (days) {
+								if (days.key <= 7)
+									d1.push(days.key);
+								else if (days.key > 7 && days.key <= 14)
+									d2.push(days.key);
+								else if (days.key > 14 && days.key <= 21)
+									d3.push(days.key);
+								else if (days.key > 21)
+									d4.push(days.key)
+
+								if (days.key == flag)
+									flag++;
+								count++;
+								if (diary[days.key].indexOf(name) < 0)
+									diary[days.key].push(name);
+							});
+						});
+							var m = {
+								count: count,
+								first: d1,
+								second: d2,
+								third: d3,
+								forth: d4
+							}
+							members[name] = m;
+						}
+				});
+		// nesse momento o objeto já está preenchido.
+		setTable();
+	});
+		}
+
+
+		function leapYear(y) {
+			return ((y % 4 == 0) && (y % 100 != 0)) || (y % 400 == 0);
+		}
+
+		function setTitle () {
+			var content = "";
+
+
+			switch (month) {
+				case 1:
+				content += "Janeiro/" + year;
+				maxDays = 31;
+				break;
+				case 2:
+				content += "Fevereiro/" + year;
+				if (leapYear(year))
+					maxDays = 29;
+				else
+					maxDays = 28;
+				break;
+				case 3:
+				content += "Março/" + year;
+				maxDays = 31;
+				break;
+				case 4:
+				content += "Abril/" + year;
+				maxDays = 30;
+				break;
+				case 5:
+				content += "Maio/" + year;
+				maxDays = 31;
+				break;
+				case 6:
+				content += "Junho/" + year;
+				maxDays = 30;
+				break;
+				case 7:
+				content += "Julho/" + year;
+				maxDays = 31;
+				break;
+				case 8:
+				content += "Agosto/" + year;
+				maxDays = 31;
+				break;
+				case 9:
+				content += "Setembro/" + year;
+				maxDays = 30;
+				break;
+				case 10:
+				content += "Outubro/" + year;
+				maxDays = 31;
+				break;
+				case 11:
+				content += "Novembro/" + year;
+				maxDays = 30;
+				break;
+				case 12:
+				content += "Dezembro/" + year;
+				maxDays = 31;
+				break;
+			}
+
+			document.getElementById("secondTitle").innerHTML = content;
+
+		}
+
+		function verifyMonth () {
+			console.log(members);
+			var title = "A quantidade total será calculada internamente conforme os diários forem marcados. A primeira semana é <font color=#33cc33>verde</font>, a segunda semana <font color=#33ccff>azul</font>, terceira semana <font color=orange>laranja</font> e, por último, a quarta será <font color=red>vermelha</font>!<br>O número ao lado do nome é a quantidade de dias que você tem turnados naquele mês (sequencial ou não).<br>E o número que aparece na barra é a quantidade de dias turnados naquela semana, se você completar o mês sua barra estará completa.";
+			var content = "<strong>Lista de membros e os dias turnados: <span class='glyphicon glyphicon-info-sign' data-toggle='tooltip' data-html='true' data-placement='bottom' title='" + title + "'></span></strong><br><br>";
+			for (var name in members) {
+				if (members.hasOwnProperty(name)) {
+
+					var a = members[name].first.length;
+					var b = members[name].second.length;
+					var c = members[name].third.length;
+					var d = members[name].forth.length;
+					var p1 = parseInt((a * 25)/7);
+					var p2 = parseInt((b * 25)/7);
+					var p3 = parseInt((c * 25)/7);
+					var ult = maxDays - 21;
+					var p4 = parseInt((d * 25)/ult);
+
+					content += "<strong id='nomeMembro'>" + name + ":</strong> <span class='badge'>" + members[name].count + "</span><div class='progress'><div class='progress-bar progress-bar-success' style='width: " + p1 + "%'>" + a + "</div><div class='progress-bar progress-bar-info' style='width: " + p2 + "%'>" + b + "</div><div class='progress-bar progress-bar-warning' style='width: " + p3 + "%'>" + c + "</div><div class='progress-bar progress-bar-danger' style='width: " + p4 + "%'>" + d + "</div></div>";
+				}
+			}
+			document.getElementById("allDays").innerHTML = content;
+			$('[data-toggle="tooltip"]').tooltip();
+		}
+
+
+
+		$(document).ready(function() {
+			setTitle();
+			exibeDados();
+		});
+	</script>
+</head>
+<body>
+
+	<h1 class="titleCalendar">Diário GCT</h1>
+	<h2 class="monthYear" id="secondTitle"></h2>
+	<div id='buttonC'>
+		<a href="newPresence"><button type="button" class="btn btn-info">Gerenciar</button></a> <a href="arcYears"><button type="button" class="btn btn-info">Arquivo</button></a>
+	</div><br>
+	<div id="Calendar"></div>
+
+	<div id ="allDays"></div>
+
+</body>
+</html>

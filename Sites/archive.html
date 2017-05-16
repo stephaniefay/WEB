@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Diário GCT</title>
+    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+
+        .titleCalendar {
+            text-align: center;
+            font-size: 36px;
+            float: left;
+        }
+
+        .monthYear {
+            text-align: center;
+            font-size: 36px;
+            float: right;
+        }
+
+        #buttonC {
+            clear: both;
+            left: 10px;
+        }
+
+        #Calendar {
+            left: 0;
+            width: 100%;
+        }
+
+        #contentTable {
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        #Cadastro {
+            clear: both;
+        }
+
+        #Cadastro select {
+            height: 200px;
+        }
+
+        .contentDiv {
+            height: 200px;
+            overflow: auto;
+        }
+
+        body {
+            overflow: auto;
+        }
+
+        ::-webkit-scrollbar {
+            width: 2px;
+            height: 2px;
+        }
+        ::-webkit-scrollbar-button {
+            width: 0px;
+            height: 0px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8000ff;
+            border: 0px none #ffffff;
+            border-radius: 0px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b66cff;
+        }
+        ::-webkit-scrollbar-thumb:active {
+            background: #5800b0;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ffffff;
+            border: 0px none #ffffff;
+            border-radius: 50px;
+        }
+        ::-webkit-scrollbar-track:hover {
+            background: #ffffff;
+        }
+        ::-webkit-scrollbar-track:active {
+            background: #ffffff;
+        }
+        ::-webkit-scrollbar-corner {
+            background: transparent;
+        }
+
+
+    </style>
+
+    <script>
+
+      var config = {
+        apiKey: "AIzaSyCazSpIzEHC21hyLUcBwSXQBfZOFLN5utg",
+        authDomain: "gc-tumblr.firebaseapp.com",
+        databaseURL: "https://gc-tumblr.firebaseio.com",
+        storageBucket: "gc-tumblr.appspot.com",
+        messagingSenderId: "922588699012"
+    };
+    firebase.initializeApp(config);
+
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+
+    var members = [];
+    var info = {};
+
+function getVector () {
+    var membersConsult = firebase.database().ref('/');
+    membersConsult.on ('value', function (GCT) {
+        GCT.forEach(function (member) {
+            if (member.val().valido == true) {
+                if (members.indexOf(member.key) < 0)
+                  members.push(member.key);
+          }
+      });
+    });
+} 
+
+function leapYear(y) {
+    return ((y % 4 == 0) && (y % 100 != 0)) || (y % 400 == 0);
+}
+
+function setTitle () {
+    var content = "";
+
+
+    switch (month) {
+        case 1:
+        content += "Janeiro/" + year;
+        maxDays = 31;
+        break;
+        case 2:
+        content += "Fevereiro/" + year;
+        if (leapYear(year))
+            maxDays = 29;
+        else
+            maxDays = 28;
+        break;
+        case 3:
+        content += "Março/" + year;
+        maxDays = 31;
+        break;
+        case 4:
+        content += "Abril/" + year;
+        maxDays = 30;
+        break;
+        case 5:
+        content += "Maio/" + year;
+        maxDays = 31;
+        break;
+        case 6:
+        content += "Junho/" + year;
+        maxDays = 30;
+        break;
+        case 7:
+        content += "Julho/" + year;
+        maxDays = 31;
+        break;
+        case 8:
+        content += "Agosto/" + year;
+        maxDays = 31;
+        break;
+        case 9:
+        content += "Setembro/" + year;
+        maxDays = 30;
+        break;
+        case 10:
+        content += "Outubro/" + year;
+        maxDays = 31;
+        break;
+        case 11:
+        content += "Novembro/" + year;
+        maxDays = 30;
+        break;
+        case 12:
+        content += "Dezembro/" + year;
+        maxDays = 31;
+        break;
+    }
+
+    document.getElementById("secondTitle").innerHTML = content;
+
+}
+
+function putInfo () {
+    var content = "<br><br><br><br>";
+    for (var yearM in info) {
+        if (info.hasOwnProperty(yearM)) {
+            content += "<h1>" + yearM + "</h1><br>";
+            content += "<div class='panel-group' id='accordion" + yearM + "'><div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#accordion" + yearM + "' href='#collapse1" + yearM + "'>Janeiro</a></h4></div><div id='collapse1" + yearM + "' class='panel-collapse collapse'><div class='panel-body'>" + info[yearM][1] + "</div></div></div>";
+            content += "<div class='panel-group' id='accordion'><div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#accordion" + yearM + "' href='#collapse2" + yearM + "'>Fevereiro</a></h4></div><div id='collapse2" + yearM + "' class='panel-collapse collapse'><div class='panel-body'>" + info[yearM][2] + "</div></div></div>";
+            content += "<div class='panel-group' id='accordion'><div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#accordion" + yearM + "' href='#collapse3" + yearM + "'>Março</a></h4></div><div id='collapse3" + yearM + "' class='panel-collapse collapse'><div class='panel-body'>" + info[yearM][3] + "</div></div></div>";
+            content += "<div class='panel-group' id='accordion'><div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#accordion" + yearM + "' href='#collapse4" + yearM + "'>Abril</a></h4></div><div id='collapse4" + yearM + "' class='panel-collapse collapse'><div class='panel-body'>" + info[yearM][4] + "</div></div></div>";
+            content += "<div class='panel-group' id='accordion'><div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#accordion" + yearM + "' href='#collapse5" + yearM + "'>Maio</a></h4></div><div id='collapse5" + yearM + "' class='panel-collapse collapse'><div class='panel-body'>" + info[yearM][5] + "</div></div></div>";
+            content += "<div class='panel-group' id='accordion'><div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#accordion" + yearM + "' href='#collapse6" + yearM + "'>Junho</a></h4></div><div id='collapse6" + yearM + "' class='panel-collapse collapse'><div class='panel-body'>" + info[yearM][6] + "</div></div></div>";
+            content += "<div class='panel-group' id='accordion'><div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#accordion" + yearM + "' href='#collapse7" + yearM + "'>Julho</a></h4></div><div id='collapse7" + yearM + "' class='panel-collapse collapse'><div class='panel-body'>" + info[yearM][7] + "</div></div></div>";
+            content += "<div class='panel-group' id='accordion'><div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#accordion" + yearM + "' href='#collapse8" + yearM + "'>Agosto</a></h4></div><div id='collapse8" + yearM + "' class='panel-collapse collapse'><div class='panel-body'>" + info[yearM][8] + "</div></div></div>";
+            content += "<div class='panel-group' id='accordion'><div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#accordion" + yearM + "' href='#collapse9" + yearM + "'>Setembro</a></h4></div><div id='collapse9" + yearM + "' class='panel-collapse collapse'><div class='panel-body'>" + info[yearM][9] + "</div></div></div>";
+            content += "<div class='panel-group' id='accordion'><div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#accordion" + yearM + "' href='#collapse10" + yearM + "'>Outubro</a></h4></div><div id='collapse10" + yearM + "' class='panel-collapse collapse'><div class='panel-body'>" + info[yearM][10] + "</div></div></div>";
+            content += "<div class='panel-group' id='accordion'><div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#accordion" + yearM + "' href='#collapse11" + yearM + "'>Novembro</a></h4></div><div id='collapse11" + yearM + "' class='panel-collapse collapse'><div class='panel-body'>" + info[yearM][11] + "</div></div></div>";
+            content += "<div class='panel-group' id='accordion'><div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#accordion" + yearM + "' href='#collapse12" + yearM + "'>Dezembro</a></h4></div><div id='collapse12" + yearM + "' class='panel-collapse collapse'><div class='panel-body'>" + info[yearM][12] + "</div></div></div>";
+            content += "<div class='panel-group' id='accordion'><div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#accordion" + yearM + "' href='#collapse13" + yearM + "'>Fechou o diário do ano</a></h4></div><div id='collapse13" + yearM + "' class='panel-collapse collapse'><div class='panel-body'>" + info[yearM].allYear + "</div></div></div>";
+        }
+    }
+    document.getElementById("informations").innerHTML = content;
+}
+
+function setObject () {
+    var aux, auxYear, auxDays;
+    var yearConsult = firebase.database().ref('/Sieghart/');
+    yearConsult.on ('value', function (GCT) {
+        GCT.forEach(function (yearMember) {
+            if (!isNaN(yearMember.key)) {
+                auxDays = getDays(yearMember.key);
+                getPresence(yearMember.key, auxDays);
+                checkAllYearPresence(yearMember.key);
+                putInfo ();
+            }
+        });
+    });
+}
+
+function checkAllYearPresence (y) {
+    var aux = info[y];
+    var memberYear = [];
+    for (var i = 0; i < members.length; i++) {
+        var name = members[i];
+        var count = 0;
+        for (var monthM in aux) {
+            if (aux.hasOwnProperty(monthM)) {
+                if(aux[monthM].indexOf(name) >= 0)
+                    count++;
+            }
+        }
+        memberYear.push(count);
+    }
+    for (var i = 0; i < members.length; i++) {
+        if (memberYear[i] == 12)
+            info[y].allYear.push(members[i]);
+    }
+    if (info[y].allYear.length == 0)
+        info[y].allYear.push("Ninguém fechou o ano.");
+    console.log(info[y]);
+}
+
+function getPresence(yearMember, auxDays) {
+    var aux = {
+        1: [],
+        2: [],
+        3: [],
+        4: [],
+        5: [],
+        6: [],
+        7: [],
+        8: [],
+        9: [],
+        10: [],
+        11: [],
+        12: [],
+        allYear: []
+    };
+    var membersConsult = firebase.database().ref('/');
+    membersConsult.on('value', function(GCT) {
+        GCT.forEach(function(member) {
+            member.forEach(function(yearM) {
+                if (yearM.key == yearMember) {
+                    yearM.forEach(function(monthM) {
+                        var count = monthM.key;
+                        var numChild = monthM.numChildren();
+                        if (auxDays[count-1] == numChild) {
+                            aux[count].push(member.key);
+                        }
+                        info[yearMember] = aux;
+                    });
+                }
+            });
+        });
+    });
+}
+
+function getDays (yearMember) {
+    var result = [];
+    result.push(31);
+    if (leapYear(yearMember))
+        result.push(29);
+    else
+        result.push(28);
+    result.push(31,30,31,30,31,31,30,31,30,31);
+    return result;
+}
+
+$(document).ready(function() {
+
+    setTitle();
+    getVector();
+    setObject();
+
+});
+
+</script>
+
+</head>
+<body>
+
+    <h1 class="titleCalendar">Diário GCT</h1>
+    <h2 class="monthYear" id="secondTitle"></h2>
+    <br>
+    <div id="informations" class="container">
+    </div>
+    <br><br>
+
+    <center><a href="diario"><button type="button" class="btn btn-default">Voltar</button></a></center>
+
+</body>
+</html>

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>GCT-Mod</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.12.3.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+
+    <style type="text/css">
+        #gctBack {
+            margin-top: 6%;
+            margin-left: 42%;
+            width: 45%;
+            opacity: 0.8;
+            position: fixed;
+            z-index: -1;
+        }
+
+        #gctLogo {
+            width: 24%;
+            z-index: 0;
+            margin-left: 1%;
+            position: fixed;
+        }
+
+        #gctMenu {
+            width: 17%;
+            margin-left: 5%;
+            margin-top: 12.5%;
+            position: fixed;
+            opacity: 0.9;
+        }
+
+            #gctMenu li, a {
+                background-color: #fff;
+                color: #000;
+            }
+
+            #gctMenu a:hover {
+                color: #56159f;
+                background-color: #e1e1e1;
+            }
+
+            #gctMenu a.dropdown-toggle:hover {
+                background-color: #e1e1e1;
+            }
+
+        body {
+            background-image: url("https://68.media.tumblr.com/fd9fb4429be12cff05b19d301d9a4783/tumblr_oaf5gqcp3I1r6nrhbo1_500.jpg");
+        }
+
+        #content {
+            margin-top: 5%;
+            margin-left: 24%;
+            position: absolute;
+            width: 75%;
+            opacity: 0.9;
+        }
+
+        .panel-body {
+            text-align: justify;
+            color: #000;
+            font-size: 12pt;
+        }
+
+
+        #content a{
+           color: #9755e1;
+        }
+
+        h1 {
+           font-family: Verdana;
+           font-size: 20px;
+           border-bottom: dashed 1px;
+           color: #86649b;
+                      text-align: center;
+        }
+
+        .title {
+           font-family: Verdana;
+           font-size: 20px;
+           border-bottom: dashed 1px;
+           color: #86649b;
+           text-align: center;
+        }
+ 
+        #pagination{
+           width:170px;
+           margin-top:20px;
+           text-align:center;
+           padding:0px 2px;
+        }
+
+        #pagination a {
+          font-family:Verdana;
+          font-size:11px;
+      background-color: transparent;
+    padding:1px 5px;
+    margin:2px;
+}
+
+                #pagination a:hover {
+          font-family:Verdana;
+          font-size:11px;
+      background-color: transparent;
+      color: #86649b;
+    padding:1px 5px;
+    margin:2px;
+}
+
+
+#pagination .current_page{
+    padding:1px 5px;
+    font-family:Verdana;
+    font-size:14px;
+    margin:2px;
+    }    
+
+.perma{
+    color:#000;
+    font-family:Verdana;
+    text-align:right;
+    text-transform:uppercase;
+    font-size:10px;
+    background:transparent;
+    }
+ 
+.perma a {
+    color:#86649b !important;
+    }
+
+.permsource {
+    text-align:right;
+    background:transparent;
+    z-index:1;
+    }
+ 
+#note{
+    margin-left:20px;
+     margin:20px auto;
+     width: 500px;
+     font-size: 11px;
+     text-transform:lowercase;
+     font-family:calibri;
+     color:#000;
+}
+ 
+ol.notes{
+    list-style-type:none;
+    margin:0px;
+    padding-left:5px;
+    line-height:130%;
+    color:#000;
+}
+ 
+ol.notes li.note img.avatar {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+            }
+ 
+.info{
+    padding-bottom:3px;
+    padding-top:5px;
+    padding-left:2px;
+    text-align:right;
+    font-family:Verdana;
+    font-size:10px;
+    color:#000;
+    margin-top:5px;
+}
+ 
+.tags{
+    margin-top:5px;
+    font-family:Verdana;
+    font-size:8px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    text-align:right;
+    color:#000;
+}
+ 
+#asker{
+    line-height:23px;
+    text-align:left;
+    font-size:13px;
+    font-style:italic;
+    text-transform:lowercase;
+    padding-bottom:5px;
+    font-family: Verdana;
+    font-weight:bold;
+}
+ 
+#ques{
+    margin-top:0px;
+    color:#000;
+    padding:5px 5px 5px 0px;
+}
+ 
+#answer{
+    margin-top:-17px;
+    padding:0px 0px 0px 0px;
+}
+ 
+#audio{
+    max-width:500px;
+    display:block;
+    background:#000;
+    opacity:.8;
+    }
+   
+  
+#quote {
+    font-size:15px;
+    font-style:italic;
+    margin-bottom:-5px;
+font-family: Verdana;
+text-shadow:1px 2px 1px #e4e4e4;
+letter-spacing:-1px;
+color:#000;
+}
+ 
+#source {text-align:right;}
+
+
+
+    </style>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "pageLength": 50,
+                "bPaginate": false,
+                "bLengthChange": false
+            });
+        });
+
+    </script>
+
+        <!--
+        <h1>Moderadoras</h1>
+
+<a href="http://arme-chan-gc.tumblr.com"><img src="http://41.media.tumblr.com/ebf9e70c0f2c5c57f5e0daaa15efd054/tumblr_nmh0e5Bqdp1s8icepo3_250.jpg" id="sideimg" /></a>
+
+<a href="http://immortal-sieghart.tumblr.com"><img src="http://40.media.tumblr.com/3067a88e9d12aec75aab22efe4d56dae/tumblr_nmh0e5Bqdp1s8icepo9_250.jpg" id="sideimg" /></a>
+        -->
+
+</head>
+<body>
+     <div id="gctBack" class="container">
+        <img src="https://68.media.tumblr.com/d0e10c237b43bfd8ef5fc712969bd293/tumblr_oafzzfCpXb1rg6icho8_1280.png" class="img-responsive" />
+    </div>
+    <div id="gctLogo">
+        <img src="https://68.media.tumblr.com/ee13b1e2eb9f0d87fe63e228fe1557d5/tumblr_oafzzfCpXb1rg6icho9_1280.png" class="img-responsive" />
+    </div>
+    <div id="gctMenu">
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="/">Home</a></li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Links Importantes <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://magic-anon-oficial-gct.tumblr.com/">M!A</a></li>
+                    <li><a href="/historico">Histórico de Entrega de Pontos</a></li>
+                    <li><a href="/ask">Contato/Dúvidas</a></li>
+                    <li><a href="http://inventario-gct.tumblr.com/">Inventário GCT</a></li>
+                    <li><a href="/diario">Diário</a></li>
+                    <li><a href="/submit">Caixa de Sugestões</a></li>
+		    <li><a href="http://gct-mod.tumblr.com/mapas">Mapa Mundi</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sistemas Variados <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/private/31203963128/tumblr_ma3bxyZirg1rg6ich">Quest Board</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/coliseum">Coliseu (e Ranking)</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/85089156985/tumblr_n58kemwPix1rg6ich">Seja o Boss!</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/85987726815/tumblr_n5pi8fGtWT1rg6ich">Closet Visual</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/142206658850/tumblr_o530yc9cgN1rg6ich">Reputação</a></li>
+					<li><a href="http://gct-mod.tumblr.com/potencial">Potencial</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Missão <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/private/85537884395/tumblr_n5h1fi0zZq1rg6ich">Regras de Missão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/46638465034/tumblr_mkgdekUBFj1rg6ich">Regras de Buff/Debuff</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/136772357145/tumblr_o0jzb6oC8r1rg6ich">Inventário de Missão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/85536622075/tumblr_n5h0lxGXyW1rg6ich">Troca de Armas</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31209354410/tumblr_ma3fns9On61rg6ich">Itens de Missão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/136776962620/tumblr_o0k2mdmmbo1rg6ich">Luta em Missão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/46741956301/tumblr_mkiixuNqbA1rg6ich">Sistema de Duplas</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lojas <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/private/142208582180/tumblr_o532ugI9H11rg6ich">Reputação</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/potion">Itens de Missão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/armor">Armaduras</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/arena">Coliseu</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/petshop">Pet Shop</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/cupons">Cupons</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/102925374165/tumblr_n5v097MEnr1rg6ich">Artigos Mágicos</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/reembolso">Sistema de Reembolso</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Personagens <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/personagens">Pontuação</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/fichas">Status Padrão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31199188112/tumblr_ma36pe1Xao1rg6ich">Modelo de Ficha</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31199177135/tumblr_ma385aaoDJ1rg6ich">Lista de Personagens Disponíveis</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31159954193/tumblr_ma23ds0Ew41rg6ich">Escolha seu Personagem!</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Mascotes <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/private/31159458726/tumblr_ma230sT5hG1rg6ich">Regras de Obtenção</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31159497427/tumblr_ma231tKq6C1rg6ich">Lista de Etapas</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31202690742/tumblr_ma3b0citSa1rg6ich">Lista de Mascotes Disponíveis</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31197518409/tumblr_ma36l3ZWlA1rg6ich">Sistema de Evolução</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Turno Livre <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/private/85986773110/tumblr_n5phbnut4q1rg6ich">Tempo de Turno</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/QG">Plantas do QG</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#gerador">Gerador de Turno</a></li>
+                </ul>
+            </li>
+        </ul>
+
+<center>                {block:Pagination}
+<div id="pagination">
+
+
+      {block:PreviousPage}
+            <a href="{PreviousPage}">⇠</a>
+      {/block:PreviousPage}
+
+      {block:JumpPagination length="3"}
+            {block:CurrentPage}
+                  <span class="current_page">{PageNumber}</span>
+            {/block:CurrentPage}
+
+            {block:JumpPage}
+                  <a class="jump_page" href="{URL}">{PageNumber}</a>
+            {/block:JumpPage}
+      {/block:JumpPagination}
+
+      {block:NextPage}
+            <a href="{NextPage}">⇢</a>
+      {/block:NextPage}
+</div>
+{/block:Pagination}
+    </center>
+    </div>
+
+
+
+    <div id="content" class="panel panel-default">
+                    <div class="panel-body">
+                   <table id="example" class="table table-striped table-bordered" width="100%">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Canaban</th>
+                <th>Serdin</th>
+                <th>Paladinos</th>
+                <th>TdP</th>
+                <th>Ellia</th>
+                <th>Deuses</th>
+                <th>Ellyos</th>
+                <th>Elfos</th>
+                <th>Anões</th>
+				<th>Hades</th>
+				<th>Druídas</th>
+				<th>Áton</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Elesis</th>
+                <th>10</th>
+                <th>6</th>
+                <th>1</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>5</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+            </tr>
+            <tr>
+                <th>Lire</th>
+                <th>5</th>
+                <th>6</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>11</th>
+                <th>-5</th>
+                <th>0</th>
+                <th>5</th>
+                <th>0</th>
+            </tr>
+            <tr>
+                <th>Arme</th>
+                <th>5</th>
+                <th>11</th>
+                <th>0</th>
+                <th>1</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>5</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+            </tr>
+            <tr>
+                <th>Lass</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>-10</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+            </tr>
+            <tr>
+                <th>Ryan</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>5</th>
+                <th>-5</th>
+                <th>0</th>
+                <th>10</th>
+                <th>0</th>
+            </tr>
+            <tr>
+                <th>Ronan</th>
+                <th>10</th>
+                <th>-10</th>
+                <th>0</th>
+                <th>1</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>1</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+            </tr>
+            <tr>
+                <th>Amy</th>
+                <th>5</th>
+                <th>5</th>
+                <th>0</th>
+                <th>5</th>
+                <th>0</th>
+                <th>5</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>5</th>
+            </tr>
+            <tr>
+                <th>Jin</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>10</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+            </tr>
+            <tr>
+                <th>Sieghart</th>
+                <th>10</th>
+                <th>-7</th>
+                <th>6</th>
+                <th>0</th>
+                <th>0</th>
+                <th>10</th>
+                <th>-10</th>
+                <th>0</th>
+                <th>0</th>
+                <th>-5</th>
+                <th>0</th>
+                <th>0</th>
+            </tr>
+            <tr>
+                <th>Mari</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>10</th>
+                <th>-10</th>
+                <th>0</th>
+                <th>0</th>
+                <th>-5</th>
+                <th>0</th>
+                <th>0</th>
+            </tr>
+            <tr>
+                <th>Dio</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>-5</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>-10</th>
+                <th>10</th>
+                <th>0</th>
+                <th>-1</th>
+                <th>0</th>
+                <th>-1</th>
+                <th>-1</th>
+            </tr>
+            <tr>
+                <th>Zero</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>-5</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>-5</th>
+                <th>0</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>0</th>
+                <th>-1</th>
+                <th>-1</th>
+            </tr>
+            <tr>
+                <th>Rey</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>-5</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>-5</th>
+                <th>10</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>0</th>
+                <th>-1</th>
+                <th>-1</th>
+            </tr>
+            <tr>
+                <th>Lupus</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>-5</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>-5</th>
+                <th>0</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>10</th>
+                <th>0</th>
+                <th>-1</th>
+            </tr>
+            <tr>
+                <th>Lin</th>
+                <th>0</th>
+                <th>0</th>
+                <th>5</th>
+                <th>0</th>
+                <th>0</th>
+                <th>5</th>
+                <th>-2</th>
+                <th>0</th>
+                <th>0</th>
+                <th>-5</th>
+                <th>0</th>
+                <th>0</th>
+            </tr>
+            <tr>
+                <th>Azin</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>5</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+            </tr>
+            <tr>
+                <th>Holy</th>
+                <th>0</th>
+                <th>0</th>
+                <th>10</th>
+                <th>0</th>
+                <th>0</th>
+                <th>5</th>
+                <th>-5</th>
+                <th>0</th>
+                <th>0</th>
+                <th>-5</th>
+                <th>0</th>
+                <th>0</th>
+            </tr>
+            <tr>
+                <th>Edel</th>
+                <th>0</th>
+                <th>10</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>-5</th>
+                <th>0</th>
+                <th>0</th>
+                <th>-10</th>
+                <th>0</th>
+                <th>0</th>
+            </tr>
+            <tr>
+                <th>Veigas</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>-5</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>-5</th>
+                <th>5</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>0</th>
+                <th>-1</th>
+                <th>-1</th>
+            </tr>
+            <tr>
+                <th>Uno</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+            </tr>
+            <tr>
+                <th>Kanji</th>
+                <th>0</th>
+                <th>0</th>
+                <th>1</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>7</th>
+            </tr>
+	    <tr>
+		<th>Akihiko</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>-5</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>-5</th>
+                <th>0</th>
+                <th>-1</th>
+                <th>-1</th>
+                <th>0</th>
+                <th>-1</th>
+                <th>-1</th>
+            </tr>
+        <tr>
+        <th>Euphie</th>
+        	    <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+        </tr>
+		<th>Malygos</th>
+        	    <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+        </tr>
+		<th>Rupia</th>
+        	    <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>-10</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+        </tr>
+		<th>Nek</th>
+        	    <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>-1</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>-10</th>
+                <th>10</th>
+                <th>0</th>
+                <th>0</th>
+                <th>2</th>
+        </tr>
+        </tbody>
+    </table>
+            </div>
+        </div>
+
+		<div class="modal fade" id="gerador" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content modal-lg">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Gerador de Turnos</h4>
+        </div>
+        <div class="modal-body" style="height: 40vh;">
+           <iframe src="http://gct-mod.tumblr.com/gerador"  height="100%" width="100%" frameBorder="0"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+</body>
+</html>

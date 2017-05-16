@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Diário GCT</title>
+    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+
+        .titleCalendar {
+            text-align: center;
+            font-size: 36px;
+            float: left;
+        }
+
+        .monthYear {
+            text-align: center;
+            font-size: 36px;
+            float: right;
+        }
+
+        #buttonC {
+            clear: both;
+            left: 10px;
+        }
+
+        #Calendar {
+            left: 0;
+            width: 100%;
+        }
+
+        #contentTable {
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        #Cadastro {
+            clear: both;
+        }
+
+        #Cadastro select {
+            height: 200px;
+        }
+
+        .contentDiv {
+            height: 200px;
+            overflow: auto;
+        }
+
+        body {
+            overflow: auto;
+        }
+
+        ::-webkit-scrollbar {
+            width: 2px;
+            height: 2px;
+        }
+        ::-webkit-scrollbar-button {
+            width: 0px;
+            height: 0px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8000ff;
+            border: 0px none #ffffff;
+            border-radius: 0px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b66cff;
+        }
+        ::-webkit-scrollbar-thumb:active {
+            background: #5800b0;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ffffff;
+            border: 0px none #ffffff;
+            border-radius: 50px;
+        }
+        ::-webkit-scrollbar-track:hover {
+            background: #ffffff;
+        }
+        ::-webkit-scrollbar-track:active {
+            background: #ffffff;
+        }
+        ::-webkit-scrollbar-corner {
+            background: transparent;
+        }
+
+
+    </style>
+
+    <script>
+
+      var config = {
+        apiKey: "AIzaSyCazSpIzEHC21hyLUcBwSXQBfZOFLN5utg",
+        authDomain: "gc-tumblr.firebaseapp.com",
+        databaseURL: "https://gc-tumblr.firebaseio.com",
+        storageBucket: "gc-tumblr.appspot.com",
+        messagingSenderId: "922588699012"
+    };
+    firebase.initializeApp(config);
+
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+
+    var members = [];
+
+
+    function getVector () {
+        var membersConsult = firebase.database().ref('/');
+        membersConsult.on ('value', function (GCT) {
+            GCT.forEach(function (member) {
+                if (member.val().valido == true) {
+                    if (members.indexOf(member.key) < 0)
+                      members.push(member.key);
+              }
+          });
+            putInfo();
+        });
+    }
+
+function putInfo () {
+    var content = "<div id='save' class='alert alert-success' role='alert' style='display:none;'>Sua informação foi salva com sucesso!</div>";
+    content += "<label id='selectList' for='membersList'>Selecione os Personagens  <span class='glyphicon glyphicon-info-sign' data-html='true' data-toggle='tooltip' data-placement='bottom' title='Para selecionar mais de um personagem arraste o mouse sobre aqueles que deseja incluir ou simplesmente vá selecionando os nomes que quer enquanto pressiona ctrl'></span></label><select multiple class='form-control' id='membersList'>";
+    for (var i = 0; i < members.length; i++) {
+      content += "<option>" + members[i] + "</option>";
+  }
+  content += "</select><br><center><strong>Esses nomes serão inclusos no dia:</strong><input class='form-control' type='text' value='" + day + "/" + month + "/" + year + "' readonly><br><button type='button' class='btn btn-info' onclick='insertData();'>Salvar!</button></center>";
+  document.getElementById("Cadastro").innerHTML = content;
+
+  $('[data-toggle="tooltip"]').tooltip();
+}
+
+function insertData () {
+    var select = document.getElementById("membersList");
+    var selectedMembers = getSelectValues(select);
+    for (var i = 0; i < selectedMembers.length; i++) {
+      var update = {
+        [day]: true
+    };
+    firebase.database().ref('/' + selectedMembers[i] + '/' + year + '/' + month).update(update);
+}
+    
+    document.getElementById("save").style.display = "block";
+    setInterval(setIdleAlert, (30000)); // 30 seconds
+}
+
+function setIdleAlert() {
+    $('#save').fadeOut();
+}
+
+function getSelectValues(select) {
+    var result = [];
+    var options = select && select.options;
+    var opt;
+
+    for (var i=0, iLen=options.length; i<iLen; i++) {
+      opt = options[i];
+
+      if (opt.selected) {
+        result.push(opt.value || opt.text);
+    }
+}
+return result;
+}
+
+function leapYear(y) {
+    return ((y % 4 == 0) && (y % 100 != 0)) || (y % 400 == 0);
+}
+
+function setTitle () {
+    var content = "";
+
+
+    switch (month) {
+        case 1:
+        content += "Janeiro/" + year;
+        maxDays = 31;
+        break;
+        case 2:
+        content += "Fevereiro/" + year;
+        if (leapYear(year))
+            maxDays = 29;
+        else
+            maxDays = 28;
+        break;
+        case 3:
+        content += "Março/" + year;
+        maxDays = 31;
+        break;
+        case 4:
+        content += "Abril/" + year;
+        maxDays = 30;
+        break;
+        case 5:
+        content += "Maio/" + year;
+        maxDays = 31;
+        break;
+        case 6:
+        content += "Junho/" + year;
+        maxDays = 30;
+        break;
+        case 7:
+        content += "Julho/" + year;
+        maxDays = 31;
+        break;
+        case 8:
+        content += "Agosto/" + year;
+        maxDays = 31;
+        break;
+        case 9:
+        content += "Setembro/" + year;
+        maxDays = 30;
+        break;
+        case 10:
+        content += "Outubro/" + year;
+        maxDays = 31;
+        break;
+        case 11:
+        content += "Novembro/" + year;
+        maxDays = 30;
+        break;
+        case 12:
+        content += "Dezembro/" + year;
+        maxDays = 31;
+        break;
+    }
+
+    document.getElementById("secondTitle").innerHTML = content;
+
+}
+
+var idleTime = 0;
+
+$(document).ready(function() {
+
+    setTitle();
+    getVector();
+    
+    var idleInterval = setInterval(timerIncrement, (60000)); // 1 minute
+
+    //Zero the idle timer on mouse movement.
+    $(this).mousemove(function (e) {
+        idleTime = 0;
+    });
+    $(this).keypress(function (e) {
+        idleTime = 0;
+    });
+});
+
+
+
+function timerIncrement() {
+    idleTime = idleTime + 1;
+    console.log("timerIncrement" + idleTime);
+    if (idleTime > 9) { // 10 minutes
+        window.location.reload();
+    }
+}
+
+</script>
+
+</head>
+<body>
+
+    <h1 class="titleCalendar">Diário GCT</h1>
+    <h2 class="monthYear" id="secondTitle"></h2>
+    <br>
+    <div class="container">
+        <br><br><br><br><br>
+        <div id="Cadastro" class="form-group"></div>
+        <div id="newPersonagem" clas="form-group"></div>
+    </div>
+    <br><br>
+
+    <center><a href="diario"><button type="button" class="btn btn-default">Voltar</button></a></center>
+
+</body>
+</html>

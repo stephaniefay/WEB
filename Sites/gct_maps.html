@@ -1,0 +1,1697 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>GCT-Mod</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.12.3.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+
+    <style type="text/css">
+        #gctBack {
+            margin-top: 6%;
+            margin-left: 42%;
+            width: 45%;
+            opacity: 0.8;
+            position: fixed;
+            z-index: -1;
+        }
+
+        #gctLogo {
+            width: 24%;
+            z-index: 0;
+            margin-left: 1%;
+            position: fixed;
+        }
+
+        #gctMenu {
+            width: 17%;
+            margin-left: 5%;
+            margin-top: 12.5%;
+            position: fixed;
+            opacity: 0.9;
+        }
+
+            #gctMenu li, a {
+                background-color: #fff;
+                color: #000;
+            }
+
+            #gctMenu a:hover {
+                color: #56159f;
+                background-color: #e1e1e1;
+            }
+
+            #gctMenu a.dropdown-toggle:hover {
+                background-color: #e1e1e1;
+            }
+
+        body {
+            background-image: url("https://68.media.tumblr.com/fd9fb4429be12cff05b19d301d9a4783/tumblr_oaf5gqcp3I1r6nrhbo1_500.jpg");
+        }
+
+        #content {
+            margin-top: 5%;
+            margin-left: 24%;
+            position: absolute;
+            width: 75%;
+            opacity: 0.9;
+        }
+
+        .panel-body {
+            text-align: justify;
+            color: #000;
+            font-size: 12pt;
+        }
+
+
+        #content a{
+           color: #9755e1;
+        }
+
+        h1 {
+           font-family: Verdana;
+           font-size: 20px;
+           border-bottom: dashed 1px;
+           color: #86649b;
+                      text-align: center;
+        }
+
+        .title {
+           font-family: Verdana;
+           font-size: 20px;
+           border-bottom: dashed 1px;
+           color: #86649b;
+           text-align: center;
+        }
+ 
+        #pagination{
+           width:170px;
+           margin-top:20px;
+           text-align:center;
+           padding:0px 2px;
+        }
+
+        #pagination a {
+          font-family:Verdana;
+          font-size:11px;
+      background-color: transparent;
+    padding:1px 5px;
+    margin:2px;
+}
+
+                #pagination a:hover {
+          font-family:Verdana;
+          font-size:11px;
+      background-color: transparent;
+      color: #86649b;
+    padding:1px 5px;
+    margin:2px;
+}
+
+
+#pagination .current_page{
+    padding:1px 5px;
+    font-family:Verdana;
+    font-size:14px;
+    margin:2px;
+    }    
+
+.perma{
+    color:#000;
+    font-family:Verdana;
+    text-align:right;
+    text-transform:uppercase;
+    font-size:10px;
+    background:transparent;
+    }
+ 
+.perma a {
+    color:#86649b !important;
+    }
+
+.permsource {
+    text-align:right;
+    background:transparent;
+    z-index:1;
+    }
+ 
+#note{
+    margin-left:20px;
+     margin:20px auto;
+     width: 500px;
+     font-size: 11px;
+     text-transform:lowercase;
+     font-family:calibri;
+     color:#000;
+}
+ 
+ol.notes{
+    list-style-type:none;
+    margin:0px;
+    padding-left:5px;
+    line-height:130%;
+    color:#000;
+}
+ 
+ol.notes li.note img.avatar {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+            }
+ 
+.info{
+    padding-bottom:3px;
+    padding-top:5px;
+    padding-left:2px;
+    text-align:right;
+    font-family:Verdana;
+    font-size:10px;
+    color:#000;
+    margin-top:5px;
+}
+ 
+.tags{
+    margin-top:5px;
+    font-family:Verdana;
+    font-size:8px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    text-align:right;
+    color:#000;
+}
+ 
+#asker{
+    line-height:23px;
+    text-align:left;
+    font-size:13px;
+    font-style:italic;
+    text-transform:lowercase;
+    padding-bottom:5px;
+    font-family: Verdana;
+    font-weight:bold;
+}
+ 
+#ques{
+    margin-top:0px;
+    color:#000;
+    padding:5px 5px 5px 0px;
+}
+ 
+#answer{
+    margin-top:-17px;
+    padding:0px 0px 0px 0px;
+}
+ 
+#audio{
+    max-width:500px;
+    display:block;
+    background:#000;
+    opacity:.8;
+    }
+   
+  
+#quote {
+    font-size:15px;
+    font-style:italic;
+    margin-bottom:-5px;
+font-family: Verdana;
+text-shadow:1px 2px 1px #e4e4e4;
+letter-spacing:-1px;
+color:#000;
+}
+ 
+#source {text-align:right;}
+
+.cbp-rfgrid {
+	margin: 35px 0 0 0;
+	padding: 0;
+	list-style: none;
+	position: relative;
+	width: 100%;
+}
+
+.cbp-rfgrid li {
+	position: relative;
+	float: left;
+	overflow: hidden;
+	width: 16.6666667%; /* Fallback */
+	width: -webkit-calc(100% / 6);
+	width: calc(100% / 6);
+}
+
+.cbp-rfgrid li a,
+.cbp-rfgrid li a img {
+	display: block;
+	width: 100%;
+	cursor: pointer;
+}
+
+.cbp-rfgrid li a img {
+	max-width: 100%;
+}
+
+.cbp-rfgrid li a:hover div {
+	opacity: 1;
+}
+
+.cbp-rfgrid li a div h3 {
+	width: 100%;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1.4em;
+	letter-spacing: 2px;
+	padding: 0 10px;
+}
+
+/* Example for media query: change number of items per row */
+
+
+
+@media screen and (max-width: 1920px) {
+	.cbp-rfgrid li {
+		width: 36%; /* Fallback */
+		width: 100%-36%;
+		width: 100%-36%;
+	}
+}
+
+@media screen and (max-width: 1366px) {
+	.cbp-rfgrid li {
+		width: 100%;
+	}
+}
+
+
+
+    </style>
+
+ <!--
+        <h1>Moderadoras</h1>
+
+<a href="http://arme-chan-gc.tumblr.com"><img src="http://41.media.tumblr.com/ebf9e70c0f2c5c57f5e0daaa15efd054/tumblr_nmh0e5Bqdp1s8icepo3_250.jpg" id="sideimg" /></a>
+
+<a href="http://immortal-sieghart.tumblr.com"><img src="http://40.media.tumblr.com/3067a88e9d12aec75aab22efe4d56dae/tumblr_nmh0e5Bqdp1s8icepo9_250.jpg" id="sideimg" /></a>
+        -->
+
+</head>
+<body>
+     <div id="gctBack" class="container">
+        <img src="https://68.media.tumblr.com/d0e10c237b43bfd8ef5fc712969bd293/tumblr_oafzzfCpXb1rg6icho8_1280.png" class="img-responsive" />
+    </div>
+    <div id="gctLogo">
+        <img src="https://68.media.tumblr.com/ee13b1e2eb9f0d87fe63e228fe1557d5/tumblr_oafzzfCpXb1rg6icho9_1280.png" class="img-responsive" />
+    </div>
+    <div id="gctMenu">
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="/">Home</a></li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Links Importantes <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://magic-anon-oficial-gct.tumblr.com/">M!A</a></li>
+                    <li><a href="/historico">Histórico de Entrega de Pontos</a></li>
+                    <li><a href="/ask">Contato/Dúvidas</a></li>
+                    <li><a href="http://inventario-gct.tumblr.com/">Inventário GCT</a></li>
+                    <li><a href="/diario">Diário</a></li>
+                    <li><a href="/submit">Caixa de Sugestões</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/mapas">Mapa Mundi</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sistemas Variados <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/private/31203963128/tumblr_ma3bxyZirg1rg6ich">Quest Board</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/coliseum">Coliseu (e Ranking)</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/85089156985/tumblr_n58kemwPix1rg6ich">Seja o Boss!</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/85987726815/tumblr_n5pi8fGtWT1rg6ich">Closet Visual</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/142206658850/tumblr_o530yc9cgN1rg6ich">Reputação</a></li>
+					<li><a href="http://gct-mod.tumblr.com/potencial">Potencial</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Missão <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/private/85537884395/tumblr_n5h1fi0zZq1rg6ich">Regras de Missão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/46638465034/tumblr_mkgdekUBFj1rg6ich">Regras de Buff/Debuff</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/136772357145/tumblr_o0jzb6oC8r1rg6ich">Inventário de Missão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/85536622075/tumblr_n5h0lxGXyW1rg6ich">Troca de Armas</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31209354410/tumblr_ma3fns9On61rg6ich">Itens de Missão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/136776962620/tumblr_o0k2mdmmbo1rg6ich">Luta em Missão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/46741956301/tumblr_mkiixuNqbA1rg6ich">Sistema de Duplas</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lojas <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/private/142208582180/tumblr_o532ugI9H11rg6ich">Reputação</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/potion">Itens de Missão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/armor">Armaduras</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/arena">Coliseu</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/petshop">Pet Shop</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/cupons">Cupons</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/102925374165/tumblr_n5v097MEnr1rg6ich">Artigos Mágicos</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/reembolso">Sistema de Reembolso</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Personagens <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/personagens">Pontuação</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/fichas">Status Padrão</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31199188112/tumblr_ma36pe1Xao1rg6ich">Modelo de Ficha</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31199177135/tumblr_ma385aaoDJ1rg6ich">Lista de Personagens Disponíveis</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31159954193/tumblr_ma23ds0Ew41rg6ich">Escolha seu Personagem!</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Mascotes <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/private/31159458726/tumblr_ma230sT5hG1rg6ich">Regras de Obtenção</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31159497427/tumblr_ma231tKq6C1rg6ich">Lista de Etapas</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31202690742/tumblr_ma3b0citSa1rg6ich">Lista de Mascotes Disponíveis</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/private/31197518409/tumblr_ma36l3ZWlA1rg6ich">Sistema de Evolução</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Turno Livre <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://gct-mod.tumblr.com/private/85986773110/tumblr_n5phbnut4q1rg6ich">Tempo de Turno</a></li>
+                    <li><a href="http://gct-mod.tumblr.com/QG">Plantas do QG</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#gerador">Gerador de Turno</a></li>
+                </ul>
+            </li>
+        </ul>
+
+<center>                {block:Pagination}
+<div id="pagination">
+
+
+      {block:PreviousPage}
+            <a href="{PreviousPage}">⇠</a>
+      {/block:PreviousPage}
+
+      {block:JumpPagination length="3"}
+            {block:CurrentPage}
+                  <span class="current_page">{PageNumber}</span>
+            {/block:CurrentPage}
+
+            {block:JumpPage}
+                  <a class="jump_page" href="{URL}">{PageNumber}</a>
+            {/block:JumpPage}
+      {/block:JumpPagination}
+
+      {block:NextPage}
+            <a href="{NextPage}">⇢</a>
+      {/block:NextPage}
+</div>
+{/block:Pagination}
+    </center>
+    </div>
+
+
+
+    <div id="content" class="panel panel-default">
+                    <div class="panel-body">
+
+<center>
+<img id="Image-Maps-Com-image-maps-2016-07-17-002602" src="https://68.media.tumblr.com/d28026dfb3c66b721ace41fa242349ce/tumblr_oafzzfCpXb1rg6icho7_1280.png" border="0" width="800" height="500" orgWidth="800" orgHeight="500" usemap="#image-maps-2016-07-17-002602" alt="" />
+<map name="image-maps-2016-07-17-002602" id="ImageMapsCom-image-maps-2016-07-17-002602">
+<area  alt="" title="" data-toggle="modal" data-target="#northen" shape="rect" coords="206,176,244,217" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#nashie" shape="rect" coords="220,371,258,412" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#exaon" shape="rect" coords="353,346,391,387" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#eldarya" shape="rect" coords="354,224,392,265" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#glennia" shape="rect" coords="464,172,502,213" style="outline:none;" target="_self"  />
+<area  alt="" title="" data-toggle="modal" data-target="#sierre" shape="rect" coords="542,271,580,312" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#ahrine" shape="rect" coords="653,110,691,151" style="outline:none;" target="_self"/>
+<area  alt="" title="" data-toggle="modal" data-target="#montanhas" shape="rect" coords="553,140,591,181" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#lago" shape="rect" coords="470,344,508,385" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#floresta" shape="rect" coords="270,429,308,470" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#serdin" shape="rect" coords="223,220,298,289" style="outline:none;" target="_self" />
+</map>
+
+<img id="Image-Maps-Com-image-maps-2016-07-17-003113" src="https://68.media.tumblr.com/8bd66c2996a826b64dec2f22bd623fe1/tumblr_oafzzfCpXb1rg6icho6_1280.png" border="0" width="800" height="500" orgWidth="800" orgHeight="500" usemap="#image-maps-2016-07-17-003113" alt="" />
+<map name="image-maps-2016-07-17-003113" id="ImageMapsCom-image-maps-2016-07-17-003113">
+<area  alt="" title="" data-toggle="modal" data-target="#eraoh" shape="rect" coords="235,138,272,177" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#besmein" shape="rect" coords="212,224,249,263" style="outline:none;" target="_self"  />
+<area  alt="" title="" data-toggle="modal" data-target="#gretown" shape="rect" coords="403,250,440,289" style="outline:none;" target="_self"  />
+<area  alt="" title="" data-toggle="modal" data-target="#ascen" shape="rect" coords="501,270,538,309" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#langlen" shape="rect" coords="409,167,446,206" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#yamada" shape="rect" coords="340,111,377,150" style="outline:none;" target="_self"  />
+<area  alt="" title="" data-toggle="modal" data-target="#aozumi" shape="rect" coords="382,78,419,117" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#pardor" shape="rect" coords="552,66,589,105" style="outline:none;" target="_self"  />
+<area  alt="" title="" data-toggle="modal" data-target="#willow" shape="rect" coords="646,260,683,299" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#ford" shape="rect" coords="572,272,609,311" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#zahiri" shape="rect" coords="466,341,503,380" style="outline:none;" target="_self"  />
+<area  alt="" title="" data-toggle="modal" data-target="#lakeville" shape="rect" coords="220,286,257,325" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#canaban" shape="rect" coords="277,183,353,269" style="outline:none;" target="_self"  />
+</map>
+
+<img id="Image-Maps-Com-image-maps-2016-07-17-003443" src="https://68.media.tumblr.com/54b48b6454901fe3f9b9a40b183a7964/tumblr_oafzzfCpXb1rg6icho3_1280.png" border="0" width="800" height="500" orgWidth="800" orgHeight="500" usemap="#image-maps-2016-07-17-003443" alt="" />
+<map name="image-maps-2016-07-17-003443" id="ImageMapsCom-image-maps-2016-07-17-003443">
+<area  alt="" title="" data-toggle="modal" data-target="#oeste" shape="rect" coords="99,181,140,221" style="outline:none;" target="_self" onclick="//city1"    />
+<area  alt="" title="" data-toggle="modal" data-target="#renor" shape="rect" coords="340,300,381,340" style="outline:none;" target="_self" onclick="//city2"    />
+<area  alt="" title="" data-toggle="modal" data-target="#sul" shape="rect" coords="509,364,550,404" style="outline:none;" target="_self" onclick="//city3"    />
+<area  alt="" title="" data-toggle="modal" data-target="#islir" shape="rect" coords="624,270,665,310" style="outline:none;" target="_self" onclick="//city4"    />
+<area  alt="" title="" data-toggle="modal" data-target="#prateada" shape="rect" coords="193,237,234,277" style="outline:none;" target="_self" onclick="//village1"    />
+<area  alt="" title="" data-toggle="modal" data-target="#elay" shape="rect" coords="437,157,478,197" style="outline:none;" target="_self" onclick="//village2"    />
+<area  alt="" title="" data-toggle="modal" data-target="#volcana" shape="rect" coords="409,243,450,283" style="outline:none;" target="_self" onclick="//village3"    />
+<area  alt="" title="" data-toggle="modal" data-target="#valfor" shape="rect" coords="333,68,374,108" style="outline:none;" target="_self" onclick="//village4"    />
+<area  alt="" title="" data-toggle="modal" data-target="#mudpost" shape="rect" coords="572,98,613,138" style="outline:none;" target="_self" onclick="//village5"    />
+<area  alt="" title="" data-toggle="modal" data-target="#anton" shape="rect" coords="605,208,646,248" style="outline:none;" target="_self" onclick="//village6"    />
+</map>
+
+<img id="Image-Maps-Com-image-maps-2016-07-17-003651" src="https://68.media.tumblr.com/1c411c56f18c092b1520f6fc429dcc85/tumblr_oafzzfCpXb1rg6icho4_1280.png" border="0" width="800" height="500" orgWidth="800" orgHeight="500" usemap="#image-maps-2016-07-17-003651" alt="" />
+<map name="image-maps-2016-07-17-003651" id="ImageMapsCom-image-maps-2016-07-17-003651">
+<area  alt="" title="" data-toggle="modal" data-target="#novaesperanca" shape="rect" coords="173,291,208,330" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#kastar" shape="rect" coords="278,187,313,226" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#ahivir" shape="rect" coords="333,284,368,323" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#igner" shape="rect" coords="499,204,534,243" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#belsin" shape="rect" coords="445,300,480,339" style="outline:none;" target="_self"  />
+<area  alt="" title="" data-toggle="modal" data-target="#beldelle" shape="rect" coords="280,261,315,300" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#belsma" shape="rect" coords="551,251,586,290" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#belfer" shape="rect" coords="489,126,524,165" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#assassinos" shape="rect" coords="116,83,157,125" style="outline:none;" target="_self" />
+</map>
+
+<img id="Image-Maps-Com-image-maps-2016-07-17-003926" src="https://68.media.tumblr.com/1e9ecfe54dc679edde474203cd189827/tumblr_oafzzfCpXb1rg6icho5_1280.png" border="0" width="800" height="500" orgWidth="800" orgHeight="500" usemap="#image-maps-2016-07-17-003926" alt="" />
+<map name="image-maps-2016-07-17-003926" id="ImageMapsCom-image-maps-2016-07-17-003926">
+<area  alt="" title="" data-toggle="modal" data-target="#sacerdocio" shape="rect" coords="614,353,654,394" style="outline:none;" target="_self" onclick="//village1"    />
+<area  alt="" title="" data-toggle="modal" data-target="#deux" shape="rect" coords="732,222,772,263" style="outline:none;" target="_self" onclick="//selvagens1"    />
+<area  alt="" title="" data-toggle="modal" data-target="#dea" shape="rect" coords="596,227,636,268" style="outline:none;" target="_self" onclick="//selvagens2"    />
+<area  alt="" title="" data-toggle="modal" data-target="#conquerers" shape="rect" coords="498,140,538,181" style="outline:none;" target="_self" onclick="//ladroes"    />
+</map>
+
+<img id="Image-Maps-Com-image-maps-2016-07-17-004057" src="https://68.media.tumblr.com/5b34a12a6a889a200fb74c41fc2f2cbc/tumblr_oafzzfCpXb1rg6icho2_1280.png" border="0" width="800" height="500" orgWidth="800" orgHeight="500" usemap="#image-maps-2016-07-17-004057" alt="" />
+<map name="image-maps-2016-07-17-004057" id="ImageMapsCom-image-maps-2016-07-17-004057">
+<area  alt="" title="" data-toggle="modal" data-target="#ausert" shape="rect" coords="350,119,400,169" style="outline:none;" target="_self"  />
+<area  alt="" title="" data-toggle="modal" data-target="#alain" shape="rect" coords="95,203,145,253" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#hammadi" shape="rect" coords="299,312,349,362" style="outline:none;" target="_self"  />
+<area  alt="" title="" data-toggle="modal" data-target="#alilat" shape="rect" coords="501,256,551,306" style="outline:none;" target="_self" />
+</map>
+
+<img id="Image-Maps-Com-image-maps-2016-07-17-004210" src="https://68.media.tumblr.com/b45c43facacfde7b07a29b8547e4983f/tumblr_oafzzfCpXb1rg6icho1_1280.png" border="0" width="800" height="500" orgWidth="800" orgHeight="500" usemap="#image-maps-2016-07-17-004210" alt="" />
+<map name="image-maps-2016-07-17-004210" id="ImageMapsCom-image-maps-2016-07-17-004210">
+<area  alt="" title="" data-toggle="modal" data-target="#elfos" shape="rect" coords="181,59,253,141" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#karuel" shape="rect" coords="601,41,683,123" style="outline:none;" target="_self" />
+<area  alt="" title="" data-toggle="modal" data-target="#mjolnir" shape="rect" coords="292,311,374,393" style="outline:none;" target="_self" />
+</map>
+
+</center>
+
+
+                            </div>
+
+
+</div>
+
+
+      <!-- SERDIN -->
+  <div class="modal fade" id="northen" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Northen</h4>
+        </div>
+        <div class="modal-body">
+          <p>Cidade ao extremo norte da Capital. As exportações da Capital vão para Northen, já que é a cidade portuária mais próxima. Apesar de Canaban e Serdin comparilharem de um porto - O grande porto de Vermécia -, os serdinos optaram por outra grande cidade portuária para que seus bens chegassem mais rápido.</p>
+            <p>Sua população é quase totalmente composta por marinheiros e aspirantes à grandes negócios. Por causa do ambiente hostil e teoricamente fora dos grandes muros do reino, onde a segurança enfraquece, é um local com muitos assaltos e grandes confusões.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+      <div class="modal fade" id="ahrine" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ahrine</h4>
+        </div>
+        <div class="modal-body">
+          <p>Ao leste do continete, comporta o segundo porto Serdino. Uma cidade pequena, porém cheia de viajantes, a maioria do vilarejo próximo, querendo chegar ao porto de Vermécia para poder, finalmente, desbravar o mundo.</p>
+            <p>Um local pacífico e onde simples aldeões se encontram com os temíveis adestradores de Gorgos. Por ser mais tranquila e segura que Northen, muitos grandes negociantes acabam preferindo aportar seus navios aqui.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="sierre" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Sierre</h4>
+        </div>
+        <div class="modal-body">
+          <p>Esta cidade é responsável pela exploração de minerais na encosta do vulcão dos Gorgos. Por saberem que ali vivem as temíveis criaturas, a povoada cidade mantém sempre tropas de adestradores em suas muralhas, visando deter os monstros que podem sair de suas cavernas e tomar sua população com facilidade.</p>
+            <p>Por causa de sua posição, a maior parte da população é mineradora. E seus mercadores <i>muito</i> ricos, graças ao fato das jóias e metais serem transportados para a capital pelas estradas e vendidas à preços altíssimos para os magos.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="eldarya" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Eldarya</h4>
+        </div>
+        <div class="modal-body">
+          <p>Eldarya é a segunda maior cidade do território serdino. E isso se dá ao fato que é muito próxima da capital e é onde pessoas com mais baixa renda, que não conseguem comprar moradias em Serdin, e não querem se aventurar por Northen, acabam buscando casas e conforto dentro das muralhas serdinas, porém em Eldarya.</p>
+            <p>Sua população é quase toda composta de mercadores e lavradores. Um ou outro aventureiro qual busca por riquezas indo até o território das Harpias - na praia Carry. Outra grande parte da população, também, é de alunos da Academia Violeta que não tem dinheiro o suficiente para se manter nos dormitórios da instituição e, portanto, viajam cedo de Eldarya para Serdin todos os dias.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="glennia" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Glennia</h4>
+        </div>
+        <div class="modal-body">
+          <p>Glennia é a grande produtora de Frutas e Grãos de Serdin. Por ser em uma parte aberta, os lavradores da cidade aproveitaram o território e o solo para plantar.</p>
+            <p>Por ser uma cidadezinha meio isolada - dias de viagem ao redor das montanhas ou um perigoso avanço pelas cordilheiras - o local recebe poucas visitas e não tem muita gente. Exceto pela construção central da cidade, a maior parte de seu território é composta de pequenas fazendas que plantam e colhem.</p>
+            <p>E, graças ao fato de ser uma população calma e voltada apenas à natureza e ao plantio, diversas vezes pode-se ver elfos brancos no meio dos fazendeiros e, principalmente, rituais pagões em agradecimento às Deusas.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="nashie" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Nashie</h4>
+        </div>
+        <div class="modal-body">
+          <p>É uma cidade pequena e fora das grandes rotas comerciais. Seu grande território também é composto por grandes fazendas, porém de criadores de gado. É a cidade responsável pela carne, leite e seus derivados. Muitas vezes é possível vê-los despontando das rotas comerciais pequenas - e pouco usadas - por dentro da floresta com seus bois puxando as pesadas carroças cheias de leite e suprimentos.</p>
+          <p>O povo de lá é muito dócil e honesto, porém são desconfiados e não gostam de estranhos entrando em suas propriedades. São os únicos que fazem contato com o Vilarejo da Floresta.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+          <div class="modal fade" id="exaon" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Exaon</h4>
+        </div>
+        <div class="modal-body">
+          <p>Nomeada em homenagem ao espírito natural das águas, esta cidade tem uma vasta história com magos especialistas em magias de água e frequentemente faz festivais cultuando este tipo de magia.</p>
+        <p>É um grande ponto turístico para os serdinos, que vem de todos os lados do território querendo ver a cidade onde castelos de água são montados sobre um lago.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="floresta" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Vila da Floresta</h4>
+        </div>
+        <div class="modal-body">
+          <p>Afastada da capital e evitada pela maioria das pessoas, o vilarejo só tem comércio com Nashie. A maior parte de sua população é composta de heremitas e estudiosos, vez ou outra um druída. Eles vivem em paz em sua pequena vila com não mais que dez casas.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="lago" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Vila do Lago</h4>
+        </div>
+        <div class="modal-body">
+          <p>Uma vila qual a maior construção é o velho moinho. As pessoas na vila vivem de pequenas plantações e do próprio rio que divide o vilarejo em dois. Por mais que o nome engane, o motivo é somente porque sua populção aversa à grandes massas acabou descendo o rio em busca de paz, longe de Exaon.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="montanhas" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Vila das Montanhas - Cliffshell</h4>
+        </div>
+        <div class="modal-body">
+          <p>Um pequeno vilarejo do outro lado das montanhas. Mais precisamente subindo a encosta delas. São mineradores e comerciantes que vivem no vilarejo e, por causa de sua rápida ascensão, o vilarejo hoje já é conhecido como Cliffshell.</p>
+            <p>O grande impulsionamento do vilarejo - o maior deles, quase uma cidade - se dá ao fato de um grande comerciante que contratou muitos e muitos mineradores e hoje escava um túnel para criar uma rota de comércio rápida de Ahrine para Serdin. Por conta de toda a confusão de tomou Cliffshell, muita gente acabou viajando para o vilarejo e hoje monta sua vida ao redor deste grande comércio.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="serdin" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Reino de Serdin</h4>
+        </div>
+        <div class="modal-body">
+          <p>Serdin é um dos dois reinos dominantes em Vermécia. Serdin é conhecido como o Reino da Magia, sendo o local onde está presente a Guilda dos Magos Violetas - que é de onde vem Arme, a prodígio da academia -, que são especializados em tais habilidades. Serdin é governado por uma Rainha: Enna.</p>
+            <p><strong>NPCs em Serdin: </strong></p>
+            <li>Serre</li>
+            <li>Joshua - Pet Shop</li>
+            <li>Gareth - Bibliotecário da Academia Violeta</li>
+            <li>Fimumonora - Loja de Encantamentos e Artefatos Mágicos</li>
+                   </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+          <!-- CANABAN -->
+  <div class="modal fade" id="eraoh" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Eraoh</h4>
+        </div>
+        <div class="modal-body">
+          <p>Assim como Serdin, Canaban mantém uma cidade dentro de seu território composta de um porto e uma grande confusão de comércio e viajantes. Por ficar entre as montanhas de Canaban e a baía, foi contruída uma pesada ponte de metal que liga a cidade até o outro extremo da água, rapidamente se tornando uma rota comercial.</p>
+            <p>Contudo, a grande movimentação de dinheiro e pessoas é um grande atrativo para ladrões, assim para qualquer um entrar ou sair da cidade pela rota principal é necessário passar pela vistoria dos Cavaleiros vermelhos que mantém a segurança. As más bocas dizem que há rotas auxiliares para deixar a cidade, contudo ninguém sabe onde.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+      <div class="modal fade" id="besmein" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Besmein</h4>
+        </div>
+        <div class="modal-body">
+          <p>Na encosta das montanhas, é a segunda maior cidade Canabanense, perdendo apenas para Eraoh; contudo diferente da cidade portuária, Besmein é habitada pelos nobres menores e famílias de renome.</p>
+            <p>Em suma todo nobre sem título grande, famílias aspirando riquezas e conhecimento e grandes nobres que compram propriedades para veraneio, buscam por compras dentro de Besmein, já que as ruas são pacíficas, não há "plebeus" e as poucas pousadas do local - já que não há tabernas na cidade - são de alto nível.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="gretown" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Gretown</h4>
+        </div>
+        <div class="modal-body">
+          <p>Centro comercial de Canaban. É a cidade que reúne todas as rotas comerciais distante em uma única passagem de terra batida e com bastante segurança direto para Canaban. Seu crescimento populacional se dá ao fato de terem grandes negócios dentro da cidade e por ser um tanto afastada dos locais "problemáticos" do território, seu povo vive em paz.</p>
+            <p>Possui grandes pousadas, tabernas aos montes e caravanas chegando e partindo em todos os horários do dia. É conhecida como uma cidade que nunca para de funcionar.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="ascen" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ascen</h4>
+        </div>
+        <div class="modal-body">
+          <p>A única cidade que une os três vilarejos pequenos ao redor. Diz-se que Ascen <i>pertence</i> à três famílias prósperas e porque elas possuem as terras, possuem todos que vivem por ali.</p>
+            <p>Por causa dessa situação, os nobres de lá exigem que seu ducado seja reconhecido por Canaban, porém a rainha continua a se recusar.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="langlen" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Lang'len</h4>
+        </div>
+        <div class="modal-body">
+          <p>Cidade pequena, em processo de expansão. Apesar de seu posicionamento difícil - não só por estar fora das rotas principais, mas porque Lichs constantemente invadem seu território -, a cidade é populada por pessoas com muita coragem e disposição. Em sua grande maioria são mineradores experientes, que passam dia e noite dentro das minas tirando metal para as armaduras e espadas do reino.</p>
+            <p>Também existe a guarda da cidade, jovens com treinamento dos Cavaleiros Vermelhos que eventualmente voltaram para casa para ajudar na proteção da cidade. Mulheres e crianças em geral passam seus dias fazendo negócios - são as grandes mercadoras de Lang'len - que trazem seus filhos atrás das saias para ajudar a trazer clientes e manter os olhos atentos à qualquer <i>espertalhão</i> que tente pegar sua mercadoria sem pagar. São elas, em geral, que fazem as grandes viagens até Canaban.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="yamada" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Yamada</h4>
+        </div>
+        <div class="modal-body">
+          <p>Uma das duas pequenas vilas de Canaban. São vilas orientais, que descendem diretamente dos conhecimentos que Gaicoz deixou para a população. Junto com Aozumi mantém a proteção do palácio, impedindo que volte a ser assombrado com diversos rituais.</p>
+            <p>Em geral a população toda é de sacerdotes e plantadores, já que a maior renda de Yamada é o arroz. Em conjunto com Lang'len e suas adoráveis donzelas mercadoras, os sacerdotes trocam arroz por outras mercadorias, assim mantendo a população bem e alimentada.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+          <div class="modal fade" id="aozumi" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Aozumi</h4>
+        </div>
+        <div class="modal-body">
+          <p>A outra vila pequena que, junto com Yamada, mantém a proteção do castelo de Gaicoz. Diferente dos sacerdotes e plantadores da outra vila, esta está repleta de guerreiros samurais - seguidores do caminho de guerra do Rei. São eles que mantém os dois vilarejos protegidos não só contra qualquer ameaça de fora. Todo guerreiro samurai faz um voto de silêncio, em homenagem ao rei caído, e seguem suas vidas com honra.</p>
+            <p>Sempre que um grupo de sacerdotes e limpadores é enviado ao castelo, os guerreiros acompanham silenciosos e dedicados, fazendo o possível para ajudar em tudo que possível.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="pardor" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Pardor</h4>
+        </div>
+        <div class="modal-body">
+          <p>Vila de arqueólogos e exploradores. É um vilarejo bem grande, quase uma cidade, posicionado próxima da Cidade Antiga é de lá que os habitantes tiram seu dinheiro e diversas relíquias que são trocadas por moedas em Lang'len.</p>
+            <p>Diferente dos outros vilarejos, os Cavaleiros Vermelhos estão quase sempre presentes, mantendo o território desértico em segurança e, assim, pessoas vivas. Sempre que uma nova caverna é descoberta ou algum novo caminho é encontrado, todo o local é evacuado para que, primeiro, sejam derrotadas todas as máquinas restantes. </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="ford" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Propriedades da Família Madshields</h4>
+        </div>
+        <div class="modal-body">
+          <p>Vastas propriedades de produtores de grãos. Todos que vivem ali são empregados da família e respondem diretamente à eles. As terras fazem parte do suposto ducado.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="willow" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Propriedades da Família Stormstand</h4>
+        </div>
+        <div class="modal-body">
+          <p>Vastas propriedades de produtores de barcos, redes e varas. A família montou sua fortuna em cima da pesca e eventual caça. Todos que moram naquelas terras são empregados da família. As terras fazem parte do suposto ducado.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="zahiri" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Propriedades da Família Zahiri</h4>
+        </div>
+        <div class="modal-body">
+          <p>Criadores de gado e, portanto, grandes comerciantes de carnes, leites e derivados. As vastas propriedades pertencem à família Zahiri e todos que vivem naquelas terras são seus empregados. As terras fazem parte do suposto ducado.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+          <div class="modal fade" id="lakeville" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Lakeville</h4>
+        </div>
+        <div class="modal-body">
+          <p>Vilarejo pacato, isolado e pouco desenvolvido. A grande parte da população são elfos. É uma cidade próxima das florestas élficas e, portanto, todos que vivem ali estão em busca de algum tipo de conhecimento nos mistérios da natureza.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+          <div class="modal fade" id="canaban" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Reino de Canaban</h4>
+        </div>
+        <div class="modal-body">
+          <p>Canaban é um dos dois reinos que dominam em Vermécia. Ele é o Reino do Manejo da Espada, pois vários espadachins fenomenais, assim como Elesis, Ronan, Elscud e Sieghart são nativos de Canaban.</p>
+            <p>Existem quatro organizações conhecidas em Canaban: a Guarda Real de Canaban, os Cavaleiros Vermelhos e os Guerreiros de Canaban e os Existor. Canaban é governado por uma Rainha: Anyu.</p>
+          <p><strong>NPCs em Canaban:</strong></p>
+              <li>Gerard</li>
+              <li>Brody - Loja de Armaduras</li>
+              <li>Eleanor - Pet Shop</li>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+          <!-- TERRA DE PRATA -->
+  <div class="modal fade" id="oeste" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Cidade do Porto Oeste</h4>
+        </div>
+        <div class="modal-body">
+          <p>A maior e principal cidade portuária da Terra de Prata, foi a primeira a se estabilizar. Possui um fluxo constante de navios mercantes, turistas e aventureiros. </p>
+            <p>Sua população em grande maioria é formada por comerciantes e pescadores. Seu porto é grande o bastante para receber vários navios de outras regiões além de abrigar vários navios pesqueiros.</p>
+        <p><strong>NPCs na Região: </strong></p>
+            <li>Zelyxo - Pet Shop</li>
+            <br /><p><strong>NPCs nos arredores: </strong></p>
+            <li>Silentoak - Um velho ente da Floresta Antiga</li>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+      <div class="modal fade" id="renor" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Renor</h4>
+        </div>
+        <div class="modal-body">
+          <p>Uma cidade costeira com um porto ainda em expansão. Os campos ao redor da cidade são dedicados ao cultivo de frutas, tendo um ótimo clima para a produção destas.</p>
+            <p>Renor possui lindas praias e vistas maravilhosas – a fortaleza de Victor é magnifica vista de longe, o mesmo pode se dizer do vulcão. É uma cidade turística.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="sul" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Cidade do Porto Sul</h4>
+        </div>
+        <div class="modal-body">
+          <p>A cidade ainda está parcialmente destruída devido a eventos recentes. Seu porto, bem desenvolvido devido a sua exportação de minérios.</p> 
+            <p>É especialmente voltada a exploração de minérios, sendo que também abriga vários ferreiros. A maioria do carvão mineral usado pelos reinos e cidades vizinhas é produzida aqui.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="islir" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Islir</h4>
+        </div>
+        <div class="modal-body">
+          <p>Depois da destruição da Cidade do Porto Sul, Islir tornou-se a segunda maior cidade da Terra de Prata. A cidade em si não é grande produtora nem ponto turístico, mas serve como ponto de acesso a ilha selvagem, a Vila Anton e seus inúmeros produtos tropicais e raros.</p>
+            <p>A população é formada por estudiosos medicinais, comerciantes e exploradores. As montanhas que cercam a cidade torna o porto a principal via de acesso.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="elay" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Elay</h4>
+        </div>
+        <div class="modal-body">
+          <p>Uma vila isolada, formada por famílias que cultuam Paprion. Muito ainda não se sabe sobre sua cultura, mas basicamente sobrevivem à base de agricultura familiar, além disso os moradores locais possuem um ótimo conhecimento sobre as florestas que os rodeiam, inclusive o conhecimento sobre plantas medicinais. Existem alguns boatos que alguns de seus moradores são Druidas.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="valfor" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Valfor</h4>
+        </div>
+        <div class="modal-body">
+          <p>Uma vila localizada num vale entre as montanhas. Um vilarejo tranquilo e amigável, geralmente recebem alguns turistas que se encantam com as paisagens locais.</p>
+            <p>Seus habitantes vivem de criação de gado, agricultura e produção de queijo. Valfor é um ótimo lugar para quem busca ter férias tranquilas e saborosas.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+          <div class="modal fade" id="mudpost" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Baia de Mudpost</h4>
+        </div>
+        <div class="modal-body">
+          <p>A beira de uma extensa baía foi construída esta vila, formada principalmente por pescadores, praticamente vivem de pesca. Existem um pequeno porto na cidade.
+</p><p>Quase que isolados das outras cidades, também possuem algumas lavouras e pomares. Apesar do isolamento, são amigáveis quanto a visitantes.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="anton" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Anton</h4>
+        </div>
+        <div class="modal-body">
+          <p>Uma pequena vila na ilha selvagem que abriga grande conhecedores da vida selvagem. Algumas famílias se dedicam a criação de plantas para montaria, sendo o único local onde se faz a domesticação dessas criaturas.</p>
+            <p>A vila também abriga cultivadores de frutas tropicais e eras medicinais. As raras plantas e animais que crescem e vivem na ilha chamam a atenção de vários exploradores em busca de grana fácil.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="volcana" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Vila Volcana</h4>
+        </div>
+        <div class="modal-body">
+          <p>Sua população é formada por lenhadores e agricultores, boa parte da população cultua o Verme-Dragão. A era um ponto turístico, um ótimo destino mas tem perdidos visitantes devido aos terrores causados pelo Verme-Dragão.</p>
+            <p>A vila abastece a cidade próxima – Renor - com madeira, vegetais e grãos. Sua população é reservada e prefere não ser incomodada.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="prateada" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Vila Prateada</h4>
+        </div>
+        <div class="modal-body">
+          <p>Formada por parentes distantes e alguns conhecedores dos cavaleiros de prata; treinam novos lutadores e são responsáveis por cuidar das ruinas. </p>
+           <p> vila possui algumas famílias dedicadas as plantações de grãos, além disso também arrecadam dinheiro com o turismo – algumas pessoas adoram visitar as ruínas – as excursões são acompanhadas por lutadores, uma vez que alguns esqueletos podem aparecer.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+             <!-- ELLIA -->
+  <div class="modal fade" id="novaesperanca" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ilha Nova Esperança</h4>
+        </div>
+        <div class="modal-body">
+          <p>Onde reside o conselho diplomático de Ellia, composto por nobres de Serdin e Canaban. Ali são decididos os planos para a modernização do continente após a queda de Cazeaje.</p>
+            <p>Isso faz, portanto, a ilha o maior centro comercial e a cidade mais próspera de toda Ellia. O único local, em todo o continente, onde achará estalagens com cavalos para alugar e uma boa cama para dormir.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+      <div class="modal fade" id="ahivir" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Porto Ahivir</h4>
+        </div>
+        <div class="modal-body">
+          <p>O grande porto comercial é onde se concentra quase todo o comércio de Ellia. Apesar disso, Ahivir é a segunda maior cidade do continente, já que a maioria da população, sofrida com os anos de guerra, preferem se manter onde há mais segurança e o mais perto possível do conselho diplomático.</p>
+            <p>Neste porto é onde sai e entra todas as mercadorias do continente.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="kastar" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Kastar</h4>
+        </div>
+        <div class="modal-body">
+          <p>Kastar é bem próxima de Kastulle, por isso a cidade, por mais que pequena, é bem desenvolvida e não só academicamente. Os moradores da cidade muitas vezes se aventuram pelas antigas ruínas e catacumbas, porém nunca indo muito longe graças aos perigos.</p>
+            <p>Por mais que mais de uma vez houve o problema de encontrar com esqueletos, golens e ciclopes, as pessoas da vila constantemente contratam mercenários para destruir os monstros e poder continuar a descobrir aprendizados antigos. Sua renda econômica vem da venda de peças e relíquias.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="igner" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Igner</h4>
+        </div>
+        <div class="modal-body">
+          <p>A cidade é conhecida pela produção de armas e treinamento militar, um legado do antigo templo do fogo, contudo nenhum deles segue os ensinamentos de Cazeaje. Sobre a constante vigilância do Conselho, as tropas de Igner mantém a segurança de Ellia tanto quanto possível.</p>
+            <p>Apesar de tudo, a área de atuação das tropas, tão recentes, ainda é pequena demais.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="beldelle" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Vila Beldelle</h4>
+        </div>
+        <div class="modal-body">
+          <p>Localizada numa zona árida, vivem principalmente da pesca e mineração. Apesar das duas grandes cidades ao redor, os habitantes de Beldelle não são muito sociáveis e não gostam dos grandes centros, então continuam mantendo seu pequeno vilarejo na encosta da montanha e próxima ao mar.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="belsin" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Belsin</h4>
+        </div>
+        <div class="modal-body">
+          <p>Localizada numa das poucas áreas verdes de Ellia. Por causa da proximidade com o território de Patusei, focam-se em explorar recursos da flora local, evitando o mar e a pescaria</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+          <div class="modal fade" id="belsma" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Belsma</h4>
+        </div>
+        <div class="modal-body">
+          <p>Vivem de explorar minério e vendê-lo para Igner</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="belfer" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Belfer</h4>
+        </div>
+        <div class="modal-body">
+          <p>Composta em sua maioria por praticantes de ocultismo. Soldados de Igner estão constantemente de olho nas atividades desta vila.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="assassinos" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Guilda dos Assassinos da Cruz de Prata</h4>
+        </div>
+        <div class="modal-body">
+          <p>Os Assassinos da Cruz de Prata é uma outra guilda que existe no mundo que vive em sua cidade, a Cruz de Prata. Ela é cheia de Assassinos. Obviamente, pouco se sabe sobre ela.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+                 <!-- XÊNIA -->
+  <div class="modal fade" id="sacerdocio" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Sacerdócio dos Deuses</h4>
+        </div>
+        <div class="modal-body">
+          <p>Um grande vilarejo composto de diversos sacerdotes, sacerdotisas e adeptos dos Deuses de Xênia.</p>
+            <p>O vilarejo, em comparação com o território, é bem pequeno. Mas isso se dá ao fato de não só ser na entrada de Xênia e portanto um grande porto de barcos voadores espera pelos viajantes que buscam conhecimento espiritual, mas também o fato que existem três enormes construções, templos por assim dizer, de Ernasis, Lisnar e Armenian. </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+      <div class="modal fade" id="deux" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Deux</h4>
+        </div>
+        <div class="modal-body">
+          <p>Um dos vilarejos dos nativos. Local este onde só vive nativos homens e cultuam os Deuses de maneira dedicada, porém bruta. São os criadores das estátuas, os desbravadores das matas, e os caçadores letais, quais trazem comida e proteção para o território.</p>
+            <p>Os homens do vilarejo não são permitidos visitar o vilarejo próximo, Dea, para ver suas mulheres, filhas ou amantes. Eles devem esperar pelo dia correto da semana. Assim sendo nenhuma mulher é permitida em Deux.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="dea" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Dea</h4>
+        </div>
+        <div class="modal-body">
+           <p>Um dos vilarejos dos nativos. Local este onde só vive nativas mulheres e cultuam os Deuses de maneira delicada e espiritual. Elas oferecem seu corpo, mente e espírito para os Deuses e, portanto, seguem a vida de sacerdócio pagão aprendendo os pequenos rituais e magias que cabem à elas aprender.</p>
+            <p>As mulheres do vilarejo não são permitidas visitar o vilarejo próximo, Deux, para ver suas maridos, filhos ou amantes. Elas devem esperar pelo dia correto da semana. Assim sendo nenhum homem é permitido em Dea.</p>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="conquerers" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Conquerers</h4>
+        </div>
+        <div class="modal-body">
+          <p>Vilarejo de ladrões ou homens que praticam o sacrilégio de voltar-se contra os Deuses. São pessoas ou nativos que foram abandonados por suas vilas por desobedecerem ou desrespeitarem alguma regra e, sem mais para onde ir, voltaram-se para a vila dos conquistadores.</p>
+            <p>Por mais que não sejam <i>más</i> pessoas, estão longe de serem boas ou decentes. Em geral não gostam de visitantes, não aceitam diplomatas em suas terras e menosprezam os Deuses.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+              <!-- ATON -->
+  <div class="modal fade" id="ausert" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ausert</h4>
+        </div>
+        <div class="modal-body">
+          <p>A base de sua economia gira em torno do artesanato, também existem algumas minas ao longo das montanhas próximas onde são extraídos metais, é o único local onde se pratica essa extração em Áton.</p>
+<p>O Xeique da vila é Talibah Kalitch, é um jovem líder, assumiu a vila a alguns anos. Possui trinta anos, pele morena, cavanhaque e cabelos curtos negros, olhos verdes, possui um bom porte físico, sendo grande guerreiro de espadas carrega uma cimitarra e um arcabuz. Sua personalidade é forte possui um grande respeito, já liderou vários grupos de resgate e posse de terras conta os bandidos.</p>
+<p>A vila é formada por três famílias: A família Yossef é conhecida por seus dobradores de terra, normalmente os homens se tornam guerreiros da vila. A família Kalitch tem mais renome no continente, sendo um sobrenome nobre diante as demais vilas. Enquanto isso os Hayek são em maioria artesãos, comerciantes e mineradores.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+      <div class="modal fade" id="hammadi" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Nag Hammadi</h4>
+        </div>
+        <div class="modal-body">
+          <p>A vila de Nag Hammadi sobrevive com devido a uma grande família de lavradores, conhecidos como Haddad, estes são responsáveis por uma boa parte do abastecimento de Áton. Também são responsáveis pela criação e comercialização de camelos.</p>
+<p>O Xeique da vila se chama Qishan, um ancião de barba branca bem aparada ao redor do rosto e busto, porém de sobrancelhas que quase lhe cobriam os olhos. O ancião possui uma águia cor de areia que guia os forasteiros.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="alain" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Al Ain</h4>
+        </div>
+        <div class="modal-body">
+          <p>Uma vila bem dispersa das outras, é formada em sua maioria por grandes devotos de Setesh, sendo reservados e extremamente desconfiados de forasteiros. Sua economia baseia em artesanato e na cultura e comercialização de de olíbano e mirra. </p>
+<p>O xeique local é conhecido como Hartmut, um homem de meia idade, cabelos negros e uma longa barba. É um homem preservador que não admite a catequização proposta pelos paladinos da luz. </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="alilat" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Alilat</h4>
+        </div>
+        <div class="modal-body">
+          <p>Uma vila mais desenvolvida que as outras, possui um bom sistema de irrigação e normalmente é a que abriga os viajantes por ser mais acolhedora quanto a eles.</p>
+<p>Nela é onde ocorre feiras onde reúne exploradores de Áton para comercialização de artefatos. </p>
+<p>O xeique da vila é conhecido como Raed, um homem de meia idade, cabelos negros longos e barba aparada. Um homem compreensível e amigável, visa sempre o melhor para seu vilarejo. </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+    <!-- ARQUIMIDIA -->
+          <div class="modal fade" id="karuel" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Reino de Karuel</h4>
+        </div>
+        <div class="modal-body">
+          <p>Karuel é a maior cidade élfica não só do reino, mas de toda Ernas. É composta de uma grande muralha que, antigamente era para se proteger dos anões, e a grande capital onde cultuam uma enorme árvore. Galadriel é sua rainha.</p>        
+            <p><strong>NPCs em Karuel: </strong></p>
+            <li>Naertho Iarxidor - General de Karuel</li>
+            <li>Ayluin Grevaris - Diplomata de Karuel</li>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="mjolnir" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Reino de Mjölnir</h4>
+        </div>
+        <div class="modal-body">
+          <p>Mjölnir é a capital dos anões, composta da grande fortaleza, os túneis extensos e desemboca na base, que fica na fronteira do continente. Aron é seu rei.</p> 
+            <p><strong>NPCs em Mjölnir: </strong></p>
+            <li>Dalostrout Minecloak - General Anão</li>
+            <li>Firnul Ironbranch - Diplomata Anão</li>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      <div class="modal fade" id="elfos" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Território dos Elfos Selvagens</h4>
+        </div>
+        <div class="modal-body">
+          <p>Elfos negros, selvagens, que não possuem quaisquer intenções de diplomacia ou fim de guerra. Permanecem em Arquimídia pois as tropas anãs não podem invadir sem a autorização de Karuel e os elfos não querem mal à outros de sua espécie.</p>
+            <p>Possuem uma grande árvore repleta de magia - semelhante à que existe em Karuel -, porém esta está corrompida.</p> 
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+                 <div class="modal fade" id="gerador" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content  modal-lg">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Gerador de Turnos</h4>
+        </div>
+        <div class="modal-body" style="height: 40vh;">
+           <iframe src="http://gct-mod.tumblr.com/gerador"  height="100%" width="100%" frameBorder="0"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+</body>
+</html>

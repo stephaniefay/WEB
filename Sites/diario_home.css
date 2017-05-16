@@ -1,0 +1,77 @@
+.titleCalendar {
+	text-align: center;
+	font-size: 36px;
+	float: left;
+}
+
+.monthYear {
+	text-align: center;
+	font-size: 36px;
+	float: right;
+}
+
+#buttonC {
+	clear: both;
+	left: 10px;
+}
+
+#Calendar {
+	left: 0;
+	width: 100%;
+}
+
+#contentTable {
+	table-layout: fixed;
+	width: 100%;
+}
+
+#Cadastro {
+	clear: both;
+}
+
+#Cadastro select {
+	height: 200px;
+}
+
+.contentDiv {
+	height: 200px;
+	overflow: auto;
+}
+
+body {
+	overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #8000ff;
+  border: 0px none #ffffff;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b66cff;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #5800b0;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #ffffff;
+}
+::-webkit-scrollbar-track:active {
+  background: #ffffff;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
